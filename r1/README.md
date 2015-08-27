@@ -18,11 +18,17 @@ Below is a short list of the most basic commands you will typically use on a day
 * `cd`
 * `pwd`
 * `grep`
+* `less`
+* | and >
 * `find`
 * `ctrl-c`
 * `ctrl-z`
 * `apt-get install` (Not on Mac)
 * `apt-cache search` (Not on Mac)
+
+Despite attending this recitation, many times you will have questions about ``how do I do this?" 
+"is there a command for doing X?".  The answer to all of these questions can usually 
+be answered by Googling.  Stackoverflow has many helpful answers.
 
 ## Exercises
 
