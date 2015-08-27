@@ -19,10 +19,13 @@ Below is a short list of the most basic commands you will typically use on a day
 * `pwd`
 * `grep`
 * `less`
+* `wc`
 * | and >
 * `find`
 * `ctrl-c`
 * `ctrl-z`
+* `tar`
+* `curl`
 * `apt-get install` (Not on Mac)
 * `apt-cache search` (Not on Mac)
 
@@ -32,6 +35,13 @@ be answered by Googling.  Stackoverflow has many helpful answers.
 
 ## Exercises
 
-# Writing programs on UNIX 
+* Using commandline only, download the source code of Nginx web server. The code's URL is at here: http://nginx.org/download/nginx-1.9.2.tar.gz
+
+* Using commandline only, figure out how many C source files there are in Nginx's codebase. C source files have filenames that end of `.c` suffix.
+
+* Using commandline only, find out which C source file contains the `main` function for Nginx.
+
+
+# Program development on UNIX 
 
 
