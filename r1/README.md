@@ -50,7 +50,20 @@ actually running and debugging into one graphically appealing bundle. The UNIX
 people do things differently.  We tend not to use IDE, but rather, we use 
 separate tools for each of these development steps. 
 
-## Step 1: writing the code using an editor
+## Step 1: The editor (for writing the code)
+You *have to* learn to use one editor, `vim` or `emacs`.  I introduce `vim` here because 
+that's the editor I use.  `vim` is a text-editor; all the stuff you want to do 
+can be typically accomplished without using the mouse. (That is much faster than 
+having to click around)
 
+`vim` has two main modes:
+* insert mode (whatever you type end up in the file buffer you are editing)
+ - to enter insert mode, hit `i`
+* normal mode (whatever you type are interpreted as vim commands)
+  - to enter normal mode, hit `<ESC`>
+
+Key commands:
+* `h` `j` `k` `l` for left, down, up, right. Once you mastered using these keys, it almost becomes as natural as riding a bicycle.
+* 
 
 # Other Useful Materials on the Web
