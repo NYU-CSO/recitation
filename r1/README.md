@@ -33,7 +33,7 @@ Despite attending this recitation, many times you will have questions about ``ho
 "is there a command for doing X?".  The answer to all of these questions can usually 
 be answered by Googling.  Stackoverflow has many helpful answers.
 
-## Exercises
+## In-class exercises
 
 * Using commandline only, download the source code of Nginx web server. The code's URL is at here: http://nginx.org/download/nginx-1.9.2.tar.gz
 
@@ -44,4 +44,13 @@ be answered by Googling.  Stackoverflow has many helpful answers.
 
 # Program development on UNIX 
 
+You've probably all learned programming using IDE, which packages up the whole
+development process, i.e. writing the code, turning it into something runnable, and
+actually running and debugging into one graphically appealing bundle. The UNIX 
+people do things differently.  We tend not to use IDE, but rather, we use 
+separate tools for each of these development steps. 
 
+## Step 1: writing the code using an editor
+
+
+# Other Useful Materials on the Web
