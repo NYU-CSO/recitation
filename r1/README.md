@@ -93,8 +93,10 @@ Typically, we do not directly type `gcc` to compile programs. There are several 
 
 To address all above problems, we use a classic tool called `make`, developed by GNU. To use `make`, you write 
 a Makefile.  The meat of a Makefile consists of a bunch of rules.  Here's what a rule looks like
-`target: dependency1 dependency2
-         commands`
+```
+target: dependency1 dependency2
+         commands
+```
 
 In this repo, I have a Makefile that compiles foo.c into foo:
 ```
@@ -107,10 +109,11 @@ foo.o: foo.c
 clean:
 	rm -f foo.o foo
 ```
-*Question*  type `make`, what is the order of the commands being run? why? 
+**Question**  type `make`, what is the order of the commands being run? why? 
 
-To make writing such rules more succinct, you use variables and do [https://www.gnu.org/software/make/manual/html_node/Pattern-Match.html](pattern matching)in Makefile.
+To make writing such rules more succinct, you use variables and do [pattern matching]([https://www.gnu.org/software/make/manual/html_node/Pattern-Match.html)in Makefile.
 - Define variables as `FILES:=file1 file2`, use it later as `$FILES`
+
 There are several important [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html). 
 -`$@` (target name)
 -`$^` (name of all pre-requisites, i.e. dependencies)
