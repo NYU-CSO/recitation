@@ -167,5 +167,5 @@ Later on, if you can to checkout a particular commit from days ago, you can do s
 
 **Please do not put any code in this class on Github public repo**
 
-**If you really want to use Github, use private repo and make sure to delete them at the end of the semester**
+If you really really want to use Github, let us know and put your code in private repo. We will remind you to delete them at the end of the semester.
 (Github's [student developer pack](https://education.github.com) gives you 5 free private repo)
