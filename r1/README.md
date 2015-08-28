@@ -126,4 +126,31 @@ There are several important [automatic variables](https://www.gnu.org/software/m
 
 **In-class exercise** Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
 
-# Other Useful Materials on the Web
+## Step 3: Fix compilation errors in editor
+
+If you use vim, type `:make` in normal mode. If compilation fails, type `:copen` to see errors. Type `<ctrl-w> j` and `<ctl-w>k` to move between your text buffer and error buffer.  In error buffer, if you hit enter on a particular error line, vim will automatically bring you to the corresponding line.
+
+Emacs has better integrated support for compiling within editor.
+
+## Step 4:  Debugging
+
+The debugger for C/C++ is `gdb`, developed by GNU, again.  In order to use gdb, we need to compile the 
+source code using the `-g` flag to include appropriate debug information in the generated binary files.
+An example, `gcc -c -g foo.c`.
+
+**Exercise** Please modify your Makefile to include the `-g` flag
+
+My foo program is buggy, it is supposed to calculate the sum from 1 to 10. But it does not even terminate!
+To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortcut form)
+- `r` (run the program) 
+- `<ctrl-c>` to stop the program inside gdb
+- `bt` (print out the stack, i.e. where in the program's execution it is being stopped at)
+- `l` (print lines from the relevant source file)
+- `p <variable name` (print out the content of the variable)
+- `b` (set breakpoints, e.g. `b foo.c:7` stops the program when it is about to execute line 7 at foo.c
+- `n` (continue execution to the next source line) `s` (continue until control reaches a different source file)
+- `c` (continue execution)
+
+** Exercise ** Please use gdb to debug foo.
+
+## Step 5: Keeping track of your code using version control
