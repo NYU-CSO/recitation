@@ -118,7 +118,8 @@ There are several important [automatic variables](https://www.gnu.org/software/m
 -`$@` (target name)
 -`$^` (name of all pre-requisites, i.e. dependencies)
 - Pattern-matching using `%` and `*`. As an example:
-  ```%.b: %.a
+  ```
+  %.b: %.a
        cp  $*.a $*.b
   ```
   Above rule copies any file with suffix `.aaa` into another file with the same name except having suffix `.bbb`
