@@ -1,14 +1,14 @@
 # Basic UNIX usage
 
 Most of you are used to interacting with computers and smartphones by GUI and
-the touch interface.  As a developer / programmer / hacker / advanced user, you
-can do your job more efficient by mastering the commandline interface.  In
-UNIX, most of the interesting things you do occur by using and combining
+the touch interface.  As a developer / programmer / advanced user, you
+can do your job more efficiently by mastering the commandline interface.  In
+UNIX, most of the interesting things you want to do can be accomplished by skillfully combining
 various commands.  
 
 Your lab virtual machine is a Linux box.  Your MacOS laptop is based on BSD
-UNIX.  So the UNIX commands you learn apply to both mostly identically but have 
-some small variations.
+UNIX.  Most UNIX commands you learn apply to both, but there are 
+variations.
 
 Please read this [ guide on using UNIX commands ](https://github.com/jlevy/the-art-of-command-line).
 Below is a short list of the most basic commands you will typically use on a day to day basis:
@@ -26,12 +26,12 @@ Below is a short list of the most basic commands you will typically use on a day
 * `ctrl-z`
 * `tar`
 * `curl`
-* `apt-get install` (Not on Mac)
-* `apt-cache search` (Not on Mac)
+* `apt-get install` (This is a Linux-distribution specific command, and hence not available on Mac)
+* `apt-cache search` (same as above)
 
-Despite attending this recitation, many times you will have questions about ``how do I do this?" 
+Despite attending this recitation, many times you will have questions about "how do I do this?" 
 "is there a command for doing X?".  The answer to all of these questions can usually 
-be answered by Googling.  Stackoverflow has many helpful answers.
+be discovered by Googling.  Click on those Stackoverflow links.  It has many helpful answers.
 
 ## In-class exercises
 
@@ -63,7 +63,36 @@ having to click around)
   - to enter normal mode, hit `<ESC`>
 
 Key commands:
-* `h` `j` `k` `l` for left, down, up, right. Once you mastered using these keys, it almost becomes as natural as riding a bicycle.
-* 
+* `h` `j` `k` `l` for left, down, up, right. Once you mastered using these keys, it becomes as natural as riding a bicycle.
+* `w` to move forward one word at a time, `b` to move backward one word at a time.
+*  `x` to delete the character under the cursor. `dw` to delete the current word.  `u` to undo.
+* `:set number` to show line numbers. `:set nonumber` to turn it off.
+* `:w` to save the buffer into the file.
+* `:q` to quit vim. `:wq` to write and quit.
 
+Other readings:
+* [Vim keyboard cheatshee](http://vim.rtorr.com/)
+* [Getting started with vim](http://www.sitepoint.com/getting-started-vim/)
+* [Your problem with vim is that you don't grok vi] (http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118)
+
+There many useful plug-ins that one can install on top of the basic vim. If you want to be fancy and more productive, try these out:
+* [NERDtree] (https://github.com/scrooloose/nerdtree)
+
+## Step 2: Code compilation
+
+You use the C compiler, command `gcc`, to compile your C programs.  `gcc` as well as many key pieces of development software (e.g. the C library, make) have been developed by [GNU](http://www.gnu.org/), so typically people refer to GNU/Linux (Strictly speaking, Linux is just a kernel and not the whole system)
+
+* To compile, type `gcc hello.c`. This generates an executable `a.out`. Execute it by typing `./a.out`
+* If you want to compile the program to a different name, `gcc -o hello hello.c`
+
+Typically, we do not directly type `gcc` to compile programs. There are several reasons for why not: 
+-The gcc command for large software is very long
+- We have to compile many source files individually before combining into a single execuable 
+- We need to obey dependencies during compilation. e.g. First compile x, then compile Y (as Y uses X somehow).
+- We only want to compile those source files that have changed.  
+
+To address all above problems, we use a classic tool called `make`, developed by GNU. To use `make`, you write 
+a Makefile.
+
+ 
 # Other Useful Materials on the Web
