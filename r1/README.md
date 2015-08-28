@@ -88,7 +88,7 @@ Other readings:
 There many useful plug-ins that one can install on top of the basic vim. If you want to be fancy and more productive, try these out:
 * [NERDtree] (https://github.com/scrooloose/nerdtree)
 
-## Compilation
+## Compile
 
 You use the C compiler, command `gcc`, to compile your C programs.  `gcc` as well as many key pieces of development software (e.g. the C library, make) have been developed by [GNU](http://www.gnu.org/), so typically people refer to GNU/Linux (Strictly speaking, Linux is just a kernel and not the whole system)
 
