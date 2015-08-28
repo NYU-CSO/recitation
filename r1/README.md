@@ -97,14 +97,14 @@ a Makefile.  The meat of a Makefile consists of a bunch of rules.  Here's what a
          commands`
 
 In this repo, I have a Makefile that compiles foo.c into foo:
-`foo: foo.o main.o
+foo: foo.o main.o
 	  gcc -o foo foo.o main.o
 main.o: main.c
 	gcc -c main.c
 foo.o: foo.c
 	gcc -c foo.c
 clean:
-	rm -f foo.o foo`	
+	rm -f foo.o foo
 *Question*  type `make`, what is the order of the commands being run? why? 
 
 To make writing such rules more succinct, you use variables and do [https://www.gnu.org/software/make/manual/html_node/Pattern-Match.html](pattern matching)in Makefile.
