@@ -33,7 +33,7 @@ Despite attending this recitation, many times you will have questions about "how
 "is there a command for doing X?".  The answer to all of these questions can usually 
 be discovered by Googling.  Click on those Stackoverflow links.  It has many helpful answers.
 
-## In-class exercises
+### Exercise
 
 * Using commandline only, download the source code of Nginx web server. The code's URL is at here: http://nginx.org/download/nginx-1.9.2.tar.gz
 
@@ -124,7 +124,8 @@ There are several important [automatic variables](https://www.gnu.org/software/m
 ```
   Above rule copies any file with suffix `.a` into another file with the same name except having suffix `.b`
 
-**In-class exercise** Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
+### Exercise
+Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
 
 ## Step 3: Fix compilation errors in editor
 
@@ -138,9 +139,10 @@ The debugger for C/C++ is `gdb`, developed by GNU, again.  In order to use gdb, 
 source code using the `-g` flag to include appropriate debug information in the generated binary files.
 An example, `gcc -c -g foo.c`.
 
-**Exercise** Please modify your Makefile to include the `-g` flag
+### Exercise
+Modify your Makefile to include the `-g` flag
 
-My foo program is buggy, it is supposed to calculate the sum from 1 to 10. But it does not even terminate!
+My foo program is buggy, and does not even terminate!
 To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortcut form)
 - `r` (run the program) 
 - `<ctrl-c>` to stop the program inside gdb
@@ -151,7 +153,8 @@ To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortc
 - `n` (continue execution to the next source line) `s` (continue until control reaches a different source file)
 - `c` (continue execution)
 
-**Exercise** Please use gdb to debug foo.
+### Exercise
+Use gdb to debug foo (It is supposed to calculate the sum from 1 to 10).
 
 ## Step 5: Version control
 
