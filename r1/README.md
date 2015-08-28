@@ -15,8 +15,8 @@ Below is a short list of the most basic commands you will typically use on a day
 
 * `man`
 * `ls`
-* `cd`
-* `pwd`
+* `cd` `pwd`
+* `cp` `mv`
 * `grep`
 * `less`
 * `wc`
@@ -88,11 +88,35 @@ You use the C compiler, command `gcc`, to compile your C programs.  `gcc` as wel
 Typically, we do not directly type `gcc` to compile programs. There are several reasons for why not: 
 -The gcc command for large software is very long
 - We have to compile many source files individually before combining into a single execuable 
-- We need to obey dependencies during compilation. e.g. First compile x, then compile Y (e.g. if Y uses X).
+- We need to obey dependencies during compilation. e.g. First compile x, then compile Y (if Y uses X).
 - We only want to compile those source files that have changed.  
 
 To address all above problems, we use a classic tool called `make`, developed by GNU. To use `make`, you write 
-a Makefile.
+a Makefile.  The meat of a Makefile consists of a bunch of rules.  Here's what a rule looks like
+`target: dependency1 dependency2
+         commands`
 
- 
+In this repo, I have a Makefile that compiles foo.c into foo:
+`foo: foo.o main.o
+	  gcc -o foo foo.o main.o
+main.o: main.c
+	gcc -c main.c
+foo.o: foo.c
+	gcc -c foo.c
+clean:
+	rm -f foo.o foo`	
+*Question*  type `make`, what is the order of the commands being run? why? 
+
+To make writing such rules more succinct, you use variables and do [https://www.gnu.org/software/make/manual/html_node/Pattern-Match.html](pattern matching)in Makefile.
+- Define variables as `FILES:=file1 file2`, use it later as `$FILES`
+There are several important [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html). 
+-`$@` (target name)
+-`$^` (name of all pre-requisites, i.e. dependencies)
+- Pattern-matching using `%` and `*`. As an example, this rule
+  `%.b: %.a
+       cp  $*.a $*.b`
+  This rule copies any file with suffix `.aaa` into another file with the same name except having suffix `.bbb`
+
+*Exercise* Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
+
 # Other Useful Materials on the Web
