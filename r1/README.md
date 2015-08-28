@@ -122,7 +122,7 @@ There are several important [automatic variables](https://www.gnu.org/software/m
   %.b: %.a
        cp  $*.a $*.b
 ```
-  Above rule copies any file with suffix `.aaa` into another file with the same name except having suffix `.bbb`
+  Above rule copies any file with suffix `.a` into another file with the same name except having suffix `.b`
 
 **In-class exercise** Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
 
