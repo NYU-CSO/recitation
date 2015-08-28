@@ -149,9 +149,6 @@ The debugger for C/C++ is `gdb`, developed by GNU, again.  In order to use gdb, 
 source code using the `-g` flag to include appropriate debug information in the generated binary files.
 An example, `gcc -c -g foo.c`.
 
-### Exercise
-Modify your Makefile to include the `-g` flag
-
 My foo program is buggy, and does not even terminate!
 To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortcut form)
 - `r` (run the program) 
@@ -164,7 +161,8 @@ To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortc
 - `c` (continue execution)
 
 ### Exercise
-Use gdb to debug foo (It is supposed to calculate the sum from 1 to 10).
+- Modify your Makefile to include the `-g` flag
+- Use gdb to debug foo (It is supposed to calculate the sum from 1 to 10).
 
 ## Version control
 
