@@ -151,6 +151,21 @@ To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortc
 - `n` (continue execution to the next source line) `s` (continue until control reaches a different source file)
 - `c` (continue execution)
 
-** Exercise ** Please use gdb to debug foo.
+**Exercise** Please use gdb to debug foo.
 
-## Step 5: Keeping track of your code using version control
+## Step 5: Version control
+
+We recommend using `git`, developed by Linus Torvalds. You can read this [git tutorial](https://www.atlassian.com/git/tutorials).
+
+To get this recitation material, you have already done
+`git clone https://github.com/NYU-CSO/recitation`
+
+After making the modifications, you can check in the changes in your (local) git repo, by typing
+`git commit -am "Fix Makefile to use variables and pattern matching"`
+
+Later on, if you can to checkout a particular commit from days ago, you can do so.
+
+**Please do not put any code in this class on Github public repo**
+
+**If you really want to use Github, use private repo and make sure to delete them at the end of the semester**
+(Github's [student developer pack](https://education.github.com) gives you 5 free private repo)
