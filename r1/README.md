@@ -115,8 +115,8 @@ To make writing such rules more succinct, you use variables and do [pattern matc
 - Define variables as `FILES:=file1 file2`, use it later as `$FILES`
 
 There are several important [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html). 
--`$@` (target name)
--`$^` (name of all pre-requisites, i.e. dependencies)
+- `$@` (target name)
+- `$^` (name of all pre-requisites, i.e. dependencies)
 - Pattern-matching using `%` and `*`. As an example:
   ```
   %.b: %.a
