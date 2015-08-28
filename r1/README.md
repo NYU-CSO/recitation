@@ -109,7 +109,7 @@ foo.o: foo.c
 clean:
 	rm -f foo.o foo
 ```
-**Question**  type `make`, what is the order of the commands being run? why? 
+**Question:**  type `make`, what is the order of the commands being run? why? 
 
 To make writing such rules more succinct, you use variables and do [pattern matching]([https://www.gnu.org/software/make/manual/html_node/Pattern-Match.html)in Makefile.
 - Define variables as `FILES:=file1 file2`, use it later as `$FILES`
@@ -122,6 +122,6 @@ There are several important [automatic variables](https://www.gnu.org/software/m
        cp  $*.a $*.b`
   This rule copies any file with suffix `.aaa` into another file with the same name except having suffix `.bbb`
 
-*Exercise* Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
+**In-class exercise** Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
 
 # Other Useful Materials on the Web
