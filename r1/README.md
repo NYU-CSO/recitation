@@ -48,7 +48,7 @@ be discovered by Googling.  Click on those Stackoverflow links.  It has many hel
 * Using commandline only, find out which C source file contains the `main` function for Nginx.
 
 
-# Program development on UNIX 
+# Program development 
 
 You've probably all learned programming using IDE, which packages up the whole
 development process, i.e. writing the code, turning it into something runnable, and
@@ -56,7 +56,7 @@ actually running and debugging into one graphically appealing bundle. The UNIX
 people do things differently.  We tend not to use IDE, but rather, we use 
 separate tools for each of these development steps. 
 
-## Step 1: The editor (for writing the code)
+## Step 1: Editor 
 You *have to* learn to use one editor, `vim` or `emacs`.  I introduce `vim` here because 
 that's the editor I use.  `vim` is a text-editor; all the stuff you want to do 
 can be typically accomplished without using the mouse. (That is much faster than 
