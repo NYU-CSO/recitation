@@ -50,6 +50,7 @@ be discovered by Googling.  Click on those Stackoverflow links.  It has many hel
 * Using commandline only, figure out how many C source files there are in Nginx's codebase. C source files have filenames that end of `.c` suffix.
 
 * Using commandline only, find out which C source file contains the `main` function for Nginx.
+
 ---
 
 # Program development 
