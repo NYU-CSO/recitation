@@ -30,10 +30,9 @@ Below is a short list of the most basic commands you will typically use on a day
 * `grep`
 * `less`
 * `wc`
-* | and >
+* `|` `>` `<`
 * `find`
-* `ctrl-c`
-* `ctrl-z`
+* `ctrl-c` `ctrl-z` `fg` `bg`
 * `tar`
 * `curl`
 * `apt-get install` (This is a Linux-distribution specific command, and hence not available on Mac)
@@ -43,6 +42,7 @@ Despite attending this recitation, many times you will have questions about "how
 "is there a command for doing X?".  The answer to all of these questions can usually 
 be discovered by Googling.  Click on those Stackoverflow links.  It has many helpful answers.
 
+---
 ### Exercise
 
 * Using commandline only, download the source code of Nginx web server. The code's URL is at here: http://nginx.org/download/nginx-1.9.2.tar.gz
@@ -50,7 +50,7 @@ be discovered by Googling.  Click on those Stackoverflow links.  It has many hel
 * Using commandline only, figure out how many C source files there are in Nginx's codebase. C source files have filenames that end of `.c` suffix.
 
 * Using commandline only, find out which C source file contains the `main` function for Nginx.
-
+---
 
 # Program development 
 
@@ -81,7 +81,7 @@ Key commands:
 * `:q` to quit vim. `:wq` to write and quit.
 
 Other readings:
-* [Vim keyboard cheatshee](http://vim.rtorr.com/)
+* [Vim keyboard cheatsheet](http://vim.rtorr.com/)
 * [Getting started with vim](http://www.sitepoint.com/getting-started-vim/)
 * [Your problem with vim is that you don't grok vi] (http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim/1220118#1220118)
 
