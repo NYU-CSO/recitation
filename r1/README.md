@@ -98,11 +98,11 @@ There many useful plug-ins that one can install on top of the basic vim. If you 
 
 You use the C compiler, command `gcc`, to compile your C programs.  `gcc` as well as many key pieces of development software (e.g. the C library, make) have been developed by [GNU](http://www.gnu.org/), so typically people refer to GNU/Linux (Strictly speaking, Linux is just a kernel and not the whole system)
 
-* To compile, type `gcc hello.c`. This generates an executable `a.out`. Execute it by typing `./a.out`
+* To compile a simple `hello.c` C file, type `gcc hello.c`. This generates an executable `a.out`. Execute it by typing `./a.out`
 * If you want to compile the program to a different name, `gcc -o hello hello.c`
 
 Typically, we do not directly type `gcc` to compile programs. There are several reasons for why not: 
--The gcc command for large software is very long
+- The gcc command for large software is very long
 - We have to compile many source files individually before combining into a single execuable 
 - We need to obey dependencies during compilation. e.g. First compile x, then compile Y (if Y uses X).
 - We only want to compile those source files that have changed.  
