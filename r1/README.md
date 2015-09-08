@@ -26,16 +26,17 @@ Below is a short list of the most basic commands you will typically use on a day
 * `man`
 * `ls`
 * `cd` `pwd`
-* `cp` `mv`
-* `grep`
-* `less`
+* `cp` `mv` `rm`
+* `echo` `cat`
 * `wc`
 * `|` `>` `<`
+* `grep`
+* `tail` `head` `awk`
 * `find`
 * `ctrl-c` `ctrl-z` `fg` `bg`
 * `tar`
-* `curl`
-* `apt-get install` (This is a Linux-distribution specific command, and hence not available on Mac)
+* `curl` `wget`
+* `apt-get install` (This is a Linux-distribution specific command, and hence not available on Mac or other non-Ubuntu based distributions; for Mac, a similar package manager called Brew exists)
 * `apt-cache search` (same as above)
 
 Despite attending this recitation, many times you will have questions about "how do I do this?" 
@@ -62,10 +63,13 @@ people do things differently.  We tend not to use IDE, but rather, we use
 separate tools for each of these development steps. 
 
 ## Editor 
-You *have to* learn to use one editor, `vim` or `emacs`.  I introduce `vim` here because 
-that's the editor I use.  `vim` is a text-editor; all the stuff you want to do 
-can be typically accomplished without using the mouse. (That is much faster than 
-having to click around)
+You *have to* learn to use one editor, `vim` or `emacs`.  We introduce `vim` here because
+that's the editor we use.  `vim` is a text-editor; all the stuff you want to do
+can be typically accomplished without using the mouse (that is much faster than
+having to click around).
+
+Here is a tutorial on vim https://wiki.gentoo.org/wiki/Vim/Guide, and one on emacs http://www.gnu.org/software/emacs/tour/.
+You can also search for other tutorials.
 
 `vim` has two main modes:
 * insert mode (whatever you type end up in the file buffer you are editing)
