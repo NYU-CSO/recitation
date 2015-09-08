@@ -63,13 +63,14 @@ people do things differently.  We tend not to use IDE, but rather, we use
 separate tools for each of these development steps. 
 
 ## Editor 
-You *have to* learn to use one editor, `vim` or `emacs`.  We introduce `vim` here because
+You *have to* learn to use one editor, either `vim` or `emacs`.  We introduce `vim` here because
 that's the editor we use.  `vim` is a text-editor; all the stuff you want to do
 can be typically accomplished without using the mouse (that is much faster than
 having to click around).
 
-Here is a tutorial on vim https://wiki.gentoo.org/wiki/Vim/Guide, and one on emacs http://www.gnu.org/software/emacs/tour/.
-You can also search for other tutorials.
+Here is a tutorial on vim https://wiki.gentoo.org/wiki/Vim/Guide. (If you prefer learning 
+emacs, here's a tutorial on emacs http://www.gnu.org/software/emacs/tour/)
+You can also search online for other tutorials.
 
 `vim` has two main modes:
 * insert mode (whatever you type end up in the file buffer you are editing)
