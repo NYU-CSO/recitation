@@ -103,7 +103,7 @@ You use the C compiler, command `gcc`, to compile your C programs.  `gcc` as wel
 
 Typically, we do not directly type `gcc` to compile programs. There are several reasons for why not: 
 - The gcc command for large software is very long
-- We have to compile many source files individually before combining into a single execuable 
+- We need to compile many source files individually and combine them into a single execuable later. 
 - We need to obey dependencies during compilation. e.g. First compile x, then compile Y (if Y uses X).
 - We only want to compile those source files that have changed.  
 
