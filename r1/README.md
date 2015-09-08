@@ -96,7 +96,7 @@ There many useful plug-ins that one can install on top of the basic vim. If you 
 
 ## Compile
 
-You use the C compiler, command `gcc`, to compile your C programs.  `gcc` as well as many key pieces of development software (e.g. the C library, make) have been developed by [GNU](http://www.gnu.org/), so typically people refer to GNU/Linux (Strictly speaking, Linux is just a kernel and not the whole system)
+You use the C compiler, command `gcc`, to compile your C programs.  The C compiler `gcc`, as well as many key pieces of development software (e.g. the C library, make), have been developed by [GNU](http://www.gnu.org/). That's why you hear people sometimes refer to GNU/Linux since strictly speaking, Linux is just the kernel of the OS and not the complete system.
 
 * To compile a simple `hello.c` C file, type `gcc hello.c`. This generates an executable `a.out`. Execute it by typing `./a.out`
 * If you want to compile the program to a different name, `gcc -o hello hello.c`
@@ -143,11 +143,11 @@ There are several important [automatic variables](https://www.gnu.org/software/m
 ### Exercise
 Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
 
-## Compile in editor
+## Compiling in the editor
 
 If you use vim, type `:make` in normal mode. If compilation fails, type `:copen` to see errors. Type `<ctrl-w> j` and `<ctl-w>k` to move between your text buffer and error buffer.  In error buffer, if you hit enter on a particular error line, vim will automatically bring you to the corresponding line.
 
-Emacs has better integrated support for compiling within editor.
+Emacs has even better integrated support for compiling within editor.
 
 ## Debug
 
