@@ -10,23 +10,35 @@ Most of these exercises have multiple ways to solve them.
 # Basic Unix usage
 
 * wget http://nginx.org/download/nginx-1.9.2.tar.gz
+
 curl -O http://nginx.org/download/nginx-1.9.2.tar.gz
+
 (to issue the curl command, you must install curl, doing `sudo apt-get install curl` (which will prompt you for your password))
+
 Once the file is downloaded, you can extract it.
+
 tar -xvf nginx-1.9.2.tar.gz
 
 * find nginx-1.9.2/ -name "*.c" | wc -l
+
 find nginx-1.9.2/ | grep "\.c$" | wc -l
+
 (Note, the -name flag for find and the grep command take in slightly different inputs)
 
 * grep -r "main" nginx-1.9.2
+
 The above does not work, as we are searching for the string "main" anywhere in the contents of the file. To look specifically for the function "main", one way to do is to search for "main("
+
 grep -r "main(" nginx-1.9.2
+
 This command will return you a list of files and the line where the string "main(" was found. Which file do you think contains the primary `main` function?
 
 * First we have to find out where the nginx.c file is located. The above command can answer that question implicitly, but a direct command would also work.
+
 find nginx-1.9.2/ -name "nginx.c"
+
 Now that we have the full path of the nginx.c file, we can then issue the wc command
+
 wc -l nginx-1.9.2/src/core/nginx.c
 
 # Program development
@@ -36,8 +48,11 @@ wc -l nginx-1.9.2/src/core/nginx.c
 # Compiling and debugging
 
 * For the main.o and foo.o commands, add the `-g` flag to the gdb call.
+
 Example:
+
 foo.o : foo.c
+
         gcc -g -c foo.c
 
 * After the foo binary is compiled with debugging enabled, run gdb with `gdb foo`
@@ -53,5 +68,7 @@ With this information, we see that the program continuously executes lines 6 and
 # Git
 
 * git add hello_world.c
+
 git commit -m "Added hello world file"
+
 (if you are using a private git repository, you can also push your changes to the remote repository with git push origin master)
