@@ -1,4 +1,4 @@
-# Computer Systems Organization : Recitation 1
+# Computer Systems Organization : Tutorial 1
 
 - [Basic UNIX] (#basic-unix-usage)
 - [Program development](#program-development)
