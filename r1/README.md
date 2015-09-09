@@ -44,13 +44,15 @@ Despite attending this recitation, many times you will have questions about "how
 be discovered by Googling.  Click on those Stackoverflow links.  It has many helpful answers.
 
 ---
-### Exercise
+### Exercises
 
-* Using commandline only, download the source code of Nginx web server. The code's URL is at here: http://nginx.org/download/nginx-1.9.2.tar.gz
+* Using the command line only, download and extract the source code of Nginx, a web server. The code's URL is at here: http://nginx.org/download/nginx-1.9.2.tar.gz
 
-* Using commandline only, figure out how many C source files there are in Nginx's codebase. C source files have filenames that end of `.c` suffix.
+* Using the command line only, figure out how many C source files there are in Nginx's codebase. C source files have filenames that end of `.c` suffix.
 
-* Using commandline only, find out which C source file contains the `main` function for Nginx.
+* Using the command line only, find out which C source file contains the `main` function for Nginx.
+
+* Using the command line only, find out how many lines are inside the nginx.c file (hint: one solution requires you to run multiple commands separately).
 
 ---
 
@@ -76,12 +78,12 @@ You can also search online for other tutorials.
 * insert mode (whatever you type end up in the file buffer you are editing)
  - to enter insert mode, hit `i`
 * normal mode (whatever you type are interpreted as vim commands)
-  - to enter normal mode, hit `<ESC`>
+ - to enter normal mode, hit `<ESC`>
 
 Key commands:
 * `h` `j` `k` `l` for left, down, up, right. Once you mastered using these keys, it becomes as natural as riding a bicycle.
 * `w` to move forward one word at a time, `b` to move backward one word at a time.
-*  `x` to delete the character under the cursor. `dw` to delete the current word.  `u` to undo.
+* `x` to delete the character under the cursor. `dw` to delete the current word. `u` to undo.
 * `:set number` to show line numbers. `:set nonumber` to turn it off.
 * `:w` to save the buffer into the file.
 * `:q` to quit vim. `:wq` to write and quit.
@@ -140,8 +142,11 @@ There are several important [automatic variables](https://www.gnu.org/software/m
 ```
   Above rule copies any file with suffix `.a` into another file with the same name except having suffix `.b`
 
-### Exercise
-Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
+### Exercises
+
+* Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
+
+* Write the classic "Hello world!" program in C.
 
 ## Compiling in the editor
 
@@ -166,9 +171,13 @@ To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortc
 - `n` (continue execution to the next source line) `s` (continue until control reaches a different source file)
 - `c` (continue execution)
 
-### Exercise
-- Modify your Makefile to include the `-g` flag
-- Use gdb to debug foo (It is supposed to calculate the sum from 1 to 10).
+### Exercises
+
+* Modify your Makefile to include the `-g` flag
+
+* Use gdb to debug foo (it is supposed to calculate and print the sum from 1 to 10).
+
+* Compile above "Hello world!" program with debugging enabled.
 
 ## Version control
 
@@ -182,7 +191,11 @@ After making the modifications, you can check in the changes in your (local) git
 
 Later on, if you can to checkout a particular commit from days ago, you can do so.
 
-**Please do not put any code in this class on Github public repo**
+**Please do not put any code in this class on a Github public repo (or other public repositories)**
 
-If you really really want to use Github, let us know and put your code in private repo. We will remind you to delete them at the end of the semester.
+If you really, really want to use Github, let us know and put your code in private repo. We will remind you to delete them at the end of the semester.
+
+### Exercises
+
+* Commit your "Hello world!" program's source code to your local Git repository
 (Github's [student developer pack](https://education.github.com) gives you 5 free private repo)
