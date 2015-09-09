@@ -2,7 +2,7 @@
 
 - [Basic Unix Usage](#basic-unix-usage)
 - [Program development](#program-development)
-- [Compiling/debugging](#compiling-debugging)
+- [Compiling and debugging](#compiling-and-debugging)
 - [Git](#git)
 
 Most of these exercises have multiple ways to solve them.
@@ -33,7 +33,7 @@ wc -l nginx-1.9.2/src/core/nginx.c
 
 * The code for two versions of hello world is given in the `hello_world` folder. You can copy and paste on the terminal by using the right-click menu. Paste in your editor of choice (if vim, be sure to enable insert mode).
 
-# Compiling/debugging
+# Compiling and debugging
 
 * For the main.o and foo.o commands, add the `-g` flag to the gdb call.
 Example:
