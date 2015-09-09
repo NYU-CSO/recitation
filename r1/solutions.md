@@ -52,6 +52,7 @@ wc -l nginx-1.9.2/src/core/nginx.c
 Example:
 
 foo.o : foo.c
+
         gcc -g -c foo.c
 
 * After the foo binary is compiled with debugging enabled, run gdb with `gdb foo`
