@@ -142,7 +142,7 @@ There are several important [automatic variables](https://www.gnu.org/software/m
 ```
   Above rule copies any file with suffix `.a` into another file with the same name except having suffix `.b`
 
-### Exercise
+### Exercises
 
 * Rewrite the given Makefile using pattern matching and variables. Make it as clean and re-usable as possible.
 
@@ -171,7 +171,7 @@ To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortc
 - `n` (continue execution to the next source line) `s` (continue until control reaches a different source file)
 - `c` (continue execution)
 
-### Exercise
+### Exercises
 
 * Modify your Makefile to include the `-g` flag
 
@@ -195,7 +195,7 @@ Later on, if you can to checkout a particular commit from days ago, you can do s
 
 If you really, really want to use Github, let us know and put your code in private repo. We will remind you to delete them at the end of the semester.
 
-### Exercise
+### Exercises
 
 * Commit your "Hello world!" program's source code to your local Git repository
 (Github's [student developer pack](https://education.github.com) gives you 5 free private repo)
