@@ -9,7 +9,8 @@
  * the command line arguments.
  * In C, we also have the command line arguments. The first one is always
  * the name of the executable instead. As you will learn, we cannot tell array lengths in C like we can
- * in Java where we could do args.length. Therefore in C, we must give the array length as another parameter.
+ * in Java where we could do args.length.
+ * Therefore in C, we must give the array length as another parameter.
  */
 
 #include <stdio.h>
