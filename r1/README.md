@@ -54,6 +54,8 @@ be discovered by Googling.  Click on those Stackoverflow links.  It has many hel
 
 * Using the command line only, find out how many lines are inside the nginx.c file (hint: one solution requires you to run multiple commands separately).
 
+* How would you rename a file? Create a file and rename it.
+
 ---
 
 # Program development 
@@ -175,7 +177,7 @@ To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortc
 
 * Modify your Makefile to include the `-g` flag
 
-* Use gdb to debug foo (it is supposed to calculate and print the sum from 1 to 10).
+* Use gdb to debug foo (it is supposed to calculate and print the sum from 1 to 10) (how can you interrupt foo while it is running?).
 
 * Compile above "Hello world!" program with debugging enabled.
 
