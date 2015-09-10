@@ -5,7 +5,7 @@
  *
  * To compile, compile as gcc basic.c
  * To compile to a specific name, compile as gcc basic.c -o binary_name
- * To compile with debugging, compile ass gcc -g basic.c -o debuggable_binary
+ * To compile with debugging, compile as gcc -g basic.c -o debuggable_binary
  */
 
 
