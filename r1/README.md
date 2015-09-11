@@ -26,6 +26,7 @@ Below is a short list of the most basic commands you will typically use on a day
 * `man`
 * `ls`
 * `cd` `pwd`
+* `mkdir`
 * `cp` `mv` `rm`
 * `echo` `cat`
 * `wc`
