@@ -1,6 +1,6 @@
 # Computer Systems Organization : Tutorial 1
 
-- [Basic UNIX] (#basic-unix-usage)
+- [Basic UNIX](#basic-unix-usage)
 - [Program development](#program-development)
    * [Editor](#editor)
    * [Compile](#compile)
@@ -17,7 +17,7 @@ UNIX, most of the interesting things you want to do can be accomplished by skill
 various commands.  
 
 Your lab virtual machine is a Linux box.  Your MacOS laptop is based on BSD
-UNIX.  Most UNIX commands you learn apply to both, but there are 
+UNIX.  Most UNIX commands you learn apply to both, but there are
 variations.
 
 Please read this [ guide on using UNIX commands ](https://github.com/jlevy/the-art-of-command-line).
@@ -40,8 +40,8 @@ Below is a short list of the most basic commands you will typically use on a day
 * `apt-get install` (This is a Linux-distribution specific command, and hence not available on Mac or other non-Ubuntu based distributions; for Mac, a similar package manager called Brew exists)
 * `apt-cache search` (same as above)
 
-Despite attending this recitation, many times you will have questions about "how do I do this?" 
-"is there a command for doing X?".  The answer to all of these questions can usually 
+Despite attending this recitation, many times you will have questions about "how do I do this?"
+"is there a command for doing X?".  The answer to all of these questions can usually
 be discovered by Googling.  Click on those Stackoverflow links.  It has many helpful answers.
 
 ---
@@ -59,21 +59,21 @@ be discovered by Googling.  Click on those Stackoverflow links.  It has many hel
 
 ---
 
-# Program development 
+# Program development
 
 You've probably all learned programming using IDE, which packages up the whole
 development process, i.e. writing the code, turning it into something runnable, and
-actually running and debugging into one graphically appealing bundle. The UNIX 
-people do things differently.  We tend not to use IDE, but rather, we use 
-separate tools for each of these development steps. 
+actually running and debugging into one graphically appealing bundle. The UNIX
+people do things differently.  We tend not to use IDE, but rather, we use
+separate tools for each of these development steps.
 
-## Editor 
+## Editor
 You *have to* learn to use one editor, either `vim` or `emacs`.  We introduce `vim` here because
 that's the editor we use.  `vim` is a text-editor; all the stuff you want to do
 can be typically accomplished without using the mouse (that is much faster than
 having to click around).
 
-Here is a tutorial on vim https://wiki.gentoo.org/wiki/Vim/Guide. (If you prefer learning 
+Here is a tutorial on vim https://wiki.gentoo.org/wiki/Vim/Guide. (If you prefer learning
 emacs, here's a tutorial on emacs http://www.gnu.org/software/emacs/tour/)
 You can also search online for other tutorials.
 
@@ -106,13 +106,13 @@ You use the C compiler, command `gcc`, to compile your C programs.  The C compil
 * To compile a simple `hello.c` C file, type `gcc hello.c`. This generates an executable `a.out`. Execute it by typing `./a.out`
 * If you want to compile the program to a different name, `gcc -o hello hello.c`
 
-Typically, we do not directly type `gcc` to compile programs. There are several reasons for why not: 
+Typically, we do not directly type `gcc` to compile programs. There are several reasons for why not:
 - The gcc command for large software is very long
-- We need to compile many source files individually and combine them into a single execuable later. 
+- We need to compile many source files individually and combine them into a single execuable later.
 - We need to obey dependencies during compilation. e.g. First compile x, then compile Y (if Y uses X).
 - We only want to compile those source files that have changed.  
 
-To address all above problems, we use a classic tool called `make`, developed by GNU. To use `make`, you write 
+To address all above problems, we use a classic tool called `make`, developed by GNU. To use `make`, you write
 a Makefile.  The meat of a Makefile consists of a bunch of rules.  Here's what a rule looks like
 ```
 target: dependency1 dependency2
@@ -122,7 +122,7 @@ target: dependency1 dependency2
 In this repo, I have a Makefile that compiles foo.c into foo:
 ```
 foo: foo.o main.o
-	  gcc -o foo foo.o main.o
+	gcc -o foo foo.o main.o
 main.o: main.c
 	gcc -c main.c
 foo.o: foo.c
@@ -130,12 +130,12 @@ foo.o: foo.c
 clean:
 	rm -f foo.o foo
 ```
-**Question:**  type `make`, what is the order of the commands being run? why? 
+**Question:**  type `make`, what is the order of the commands being run? why?
 
 To make writing such rules more succinct, you use variables and do [pattern matching]([https://www.gnu.org/software/make/manual/html_node/Pattern-Match.html)in Makefile.
 - Define variables as `FILES:=file1 file2`, use it later as `$FILES`
 
-There are several important [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html). 
+There are several important [automatic variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html).
 - `$@` (target name)
 - `$^` (name of all pre-requisites, i.e. dependencies)
 - Pattern-matching using `%` and `*`. As an example:
@@ -159,17 +159,17 @@ Emacs has even better integrated support for compiling within editor.
 
 ## Debug
 
-The debugger for C/C++ is `gdb`, developed by GNU, again.  In order to use gdb, we need to compile the 
+The debugger for C/C++ is `gdb`, developed by GNU, again.  In order to use gdb, we need to compile the
 source code using the `-g` flag to include appropriate debug information in the generated binary files.
 An example, `gcc -c -g foo.c`.
 
 My foo program is buggy, and does not even terminate!
 To debug, type `gdb foo`.  The most basic gdb commands are: (I give their shortcut form)
-- `r` (run the program) 
+- `r` (run the program)
 - `<ctrl-c>` to stop the program inside gdb
 - `bt` (print out the stack, i.e. where in the program's execution it is being stopped at)
 - `l` (print lines from the relevant source file)
-- `p <variable name` (print out the content of the variable)
+- `p <variable name>` (print out the content of the variable)
 - `b` (set breakpoints, e.g. `b foo.c:7` stops the program when it is about to execute line 7 at foo.c
 - `n` (continue execution to the next source line) `s` (continue until control reaches a different source file)
 - `c` (continue execution)
@@ -200,5 +200,5 @@ If you really, really want to use Github, let us know and put your code in priva
 
 ### Exercises
 
-* Commit your "Hello world!" program's source code to your local Git repository
+* Commit your "Hello world!" program's source code to your local Git repository.
 (Github's [student developer pack](https://education.github.com) gives you 5 free private repo)
