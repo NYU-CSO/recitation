@@ -69,3 +69,41 @@ Lenny writes the following code:
 ... but the compiler gets confused at line 5 and misinterprets the value stored in `a` to be an integer and performs standard signed arithmetic on it and `b`. Then, on line 7, it remembers the value stored in `a` is a float and prints out its float representation.
 
 Write (in hex) the values that live at both `&a` and `&b` at lines 4 and 6, then write what ends up being printed to the screen.
+
+
+Exercise 4 -- "Binary Bonanza"
+-----
+
+Write the function printb() (in C!) that takes a pointer to a 4 byte value and prints its binary representation (preceded by `0b`). 
+
+```c
+int main (int argc, char **argv) {
+
+  int    a = 42;
+  float  b = 13.37;
+
+  printb(&a);
+  printb(&b);
+
+  return 0;
+}
+
+void printb (void *p) {
+  // ... your code here ...
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
