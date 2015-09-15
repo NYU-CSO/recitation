@@ -93,6 +93,7 @@ void printb (void *p) {
 }
 ```
 
+Brownie-points: Don't print out any of the leading zeros!
 
 
 
