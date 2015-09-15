@@ -66,6 +66,6 @@ Lenny writes the following code:
 07  printf("-a + b = %f \n", a);
 ```
 
-... but the compiler gets confused at line 5 and misinterprets the value stored in b to be an integer. Then, on line 7, it misinterprets the value stored in a to be a float!
+... but the compiler gets confused at line 5 and misinterprets the value stored in `a` to be an integer and performs standard signed arithmetic on it and `b`. Then, on line 7, it remembers the value stored in `a` is a float and prints out the float representation.
 
 Write (in hex) the values that live at both &a and &b at lines 4 and 6, then write what ends up being printed to the screen.
