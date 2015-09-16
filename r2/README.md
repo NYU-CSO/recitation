@@ -97,6 +97,7 @@ Brownie-points: Don't print out any of the leading zeros!
 
 
 Exercise 5 -- "Macro Management"
+-----
 
 Consider the following code:
 
