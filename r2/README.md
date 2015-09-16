@@ -2,14 +2,14 @@ Tutorial 2
 ==========
 
 
-Exercise 1
+Exercise 1 -- "Signed Subtraction"
 -----
 
-Suppose we want to add two numbers on an x86 processor: 86 and -94. We know the answer is -8, but we want to see how these numbers are stored in memory, added, then stored again. 
+Suppose we want to add two numbers on an x86 processor: 86 and -94. We know the answer is -8, but we want to see how these numbers are stored in memory, added, then stored again.
 
-Let the number 86 be stored at address `0x00` and let the number -94 be stored at the address `0x04`. (What decimal numbers do `0x00` and `0x04` represent? Why are they not consecutive?) Further, let the result, -8, be stored at address `0x08`. 
+Let the number 86 be stored at address `0x00` and let the number -94 be stored at the address `0x04`. (What decimal numbers do `0x00` and `0x04` represent? Why are they not consecutive?) Further, let the result, -8, be stored at address `0x08`.
 
-Draw the memory before the addition operation and after the addition operation in hexadecimal. 
+Draw the memory before the addition operation and after the addition operation in hexadecimal.
 
 Rather than convert -8 into 32-bit signed integer directly, calculate -8 via the addition of 86 and -94 as 32-bit signed integers.
 
@@ -23,26 +23,26 @@ Consider the following code:
 ```c
 #include <stdio.h>
 
-void f(int p, int q) { p = q; } 
-void g(int* p, int q) { p = &q; } 
-void h(int* p, int q) { *p = q; } 
+void f(int p, int q) { p = q; }
+void g(int* p, int q) { p = &q; }
+void h(int* p, int q) { *p = q; }
 
-int main() { 
-  int a, b; 
-  a = 9; b = 2; 
+int main() {
+  int a, b;
+  a = 9; b = 2;
 
-  f(a, b); 
-  printf("%d %d\n", a, b); 
+  f(a, b);
+  printf("%d %d\n", a, b);
 
-  a = 9; b = 2; 
-  g(&a, b); 
-  printf("%d %d\n", a, b); 
- 
-  a = 9; b = 2; 
-  h(&a, b); 
-  printf("%d %d\n", a, b); 
+  a = 9; b = 2;
+  g(&a, b);
+  printf("%d %d\n", a, b);
 
-  return 0; 
+  a = 9; b = 2;
+  h(&a, b);
+  printf("%d %d\n", a, b);
+
+  return 0;
 }
 ```
 
@@ -74,7 +74,7 @@ Write (in hex) the values that live at both `&a` and `&b` at lines 4 and 6, then
 Exercise 4 -- "Binary Bonanza"
 -----
 
-Write the function printb() (in C!) that takes a pointer to a 4 byte value and prints its binary representation (preceded by `0b`). 
+Write the function printb() (in C!) that takes a pointer to a 4 byte value and prints its binary representation (preceded by `0b`).
 
 ```c
 int main (int argc, char **argv) {
@@ -96,15 +96,30 @@ void printb (void *p) {
 Brownie-points: Don't print out any of the leading zeros!
 
 
+Exercise 5 -- "Macro Management"
 
+Consider the following code:
 
+```c
+#include <stdio.h>
+#include <math.h> // to get the value of pi
 
+#define MAX_STR_LEN 100
+#define PI 3.14159265
+#define E 2.71828
+#define EPSILON 0.00001
 
+// fabs gets the absolute value for float/double
+#define CLOSE(x, y) (fabs(x - y) < EPSILON)
 
+int main() {
+   double value = M_PI; // the real value of pi given to us from math.h
+   printf("%d\n", CLOSE(value, PI));
+   value = 2.7;
+   printf("%d\n", CLOSE(value, E));
+   return 0;
+}
 
+```
 
-
-
-
-
-
+What is the output of the program?
