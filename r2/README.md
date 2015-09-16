@@ -114,11 +114,11 @@ Consider the following code:
 #define CLOSE(x, y) (fabs(x - y) < EPSILON)
 
 int main() {
-   double value = M_PI; // the real value of pi given to us from math.h
-   printf("%d\n", CLOSE(value, PI));
-   value = 2.7;
-   printf("%d\n", CLOSE(value, E));
-   return 0;
+    double value = M_PI; // the real value of pi given to us from math.h
+    printf("%d\n", CLOSE(value, PI));
+    value = 2.7;
+    printf("%d\n", CLOSE(value, E));
+    return 0;
 }
 
 ```
