@@ -71,6 +71,7 @@ Lenny writes the following code:
 
 Write (in hex) the values that live at both `&a` and `&b` at lines 4 and 6, then write what ends up being printed to the screen.
 
+Again, check the correctness of your answer using gdb.
 
 Exercise 4 -- "Binary Bonanza"
 -----
