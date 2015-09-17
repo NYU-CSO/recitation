@@ -108,14 +108,20 @@ if Lenny's code were correct? Compile `buggyendian.c` (do `gcc -std=c99 buggyend
 and run it (`./a.out`).  Does Lenny's program print out the correct value?
 
 Please debug Lenny's program.  Unlike solving a math problem, we don't debug 
-by just staring at the program, however tempting that might be.  We add
-printf's and run the program in gdb to validate what we think the program is
-doing and should be doing.
+by just staring at the program for extended periods of time, however tempting
+that might be.  This is because we usually make errors by having a wrong
+understanding/assumption on how something works, thus, staring at the code 
+while still holding that wrong assumption won't move
+us any further towards sniffing out the bugs.  We must do something to validate
+our assumption/understanding. And this is why debugging is usually done by
+adding lots of printf's and/or run the program in gdb to confirm what we think
+the program is doing and should be doing.  In the process, we will discover
+something unexpected (i.e. do i smell a bug?).
 
 Below are some suggested steps (using printf or gdb to answer the question, and not just your brain):
-* What is the array element i before and after the invocation of function EndianFlip?
-* What is the content of the array p?
-* What is the content of the tmp array before and after the loop in EndianFlip?
+* Find out what the array element i before and after the invocation of function EndianFlip?
+* Find out the content of the array p?
+* Find out the content of the tmp array before and after the loop in EndianFlip?
 
 ```c
 void
