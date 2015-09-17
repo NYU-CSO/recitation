@@ -107,9 +107,10 @@ C code is the file `buggyendian.c`.   What should the program print out
 if Lenny's code were correct? Compile `buggyendian.c` (do `gcc -std=c99 buggyendian.c`)
 and run it (`./a.out`).  Does Lenny's program print out the correct value?
 
-Please debug Lenny's program.  Unless solving a math problem, we don't debug 
-by just staring at the program.  We add printf's and run the program in gdb to 
-validate what we think the program is doing and should be doing.
+Please debug Lenny's program.  Unlike solving a math problem, we don't debug 
+by just staring at the program, however tempting that might be.  We add
+printf's and run the program in gdb to validate what we think the program is
+doing and should be doing.
 
 Below are some suggested steps (using printf or gdb to answer the question, and not just your brain):
 * What is the array element i before and after the invocation of function EndianFlip?
