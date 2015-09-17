@@ -98,31 +98,44 @@ void printb (void *p) {
 Brownie-points: Don't print out any of the leading zeros!
 
 
-Exercise 5 -- "Macro Management"
+Exercise 5 -- Debug a C program
 -----
 
-Consider the following code:
+Lenny is asked to write a program that turn an array of integers in little
+endian representation into an array of integers in big endian format.  His
+C code is the file `buggyendian.c`.   What should the program print out 
+if Lenny's code were correct? Compile `buggyendian.c` (do `gcc -std=c99 buggyendian.c`)
+and run it (`./a.out`).  Does Lenny's program print out the correct value?
+
+Please debug Lenny's program.  Unless solving a math problem, we don't debug 
+by just staring at the program.  We add printf's and run the program in gdb to 
+validate what we think the program is doing and should be doing.
+
+Below are some suggested steps (using printf or gdb to answer the question, and not just your brain):
+* What is the array element i before and after the invocation of function EndianFlip?
+* What is the content of the array p?
+* What is the content of the tmp array before and after the loop in EndianFlip?
 
 ```c
-#include <stdio.h>
-#include <math.h> // to get the value of pi
-
-#define MAX_STR_LEN 100
-#define PI 3.14159265
-#define E 2.71828
-#define EPSILON 0.00001
-
-// fabs gets the absolute value for float/double
-#define CLOSE(x, y) (fabs(x - y) < EPSILON)
-
-int main() {
-    double value = M_PI; // the real value of pi given to us from math.h
-    printf("%d\n", CLOSE(value, PI));
-    value = 2.7;
-    printf("%d\n", CLOSE(value, E));
-    return 0;
+void
+EndianFlip(int number) {
+	char *p = (char *)&number;
+	char tmp[4]; 
+	//fill the tmp array byte by byte, in the reverse order of the p array
+	for (int j = 0; j < 4; j++) {
+		tmp[j] = p[4-j];
+	}
+	number = *(int *)tmp;
 }
 
-```
+void main()
+{
+	int array[5] = {1,2,3,4,5};
 
-What is the output of the program?
+	for (int i = 0; i < 5; i++) {
+		EndianFlip(array[i]); //turn little endian or big endian or vice versa
+	}
+	
+	printf("The first element of the flipped arrays is %08x\n", array[0]);
+}
+```
