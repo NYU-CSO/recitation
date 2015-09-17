@@ -13,7 +13,8 @@ Draw the memory before the addition operation and after the addition operation i
 
 Rather than convert -8 into 32-bit signed integer directly, calculate -8 via the addition of 86 and -94 as 32-bit signed integers.
 
-
+Once you've gotten the answer down, can you think of a way to check its correctness?
+Hint: you can write a C program and use `gdb` to examine the memory.  Consider using the gdb command `x` (short for examine).
 
 Exercise 2 -- "Fun with C & Pointers"
 -----
