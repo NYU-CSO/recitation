@@ -6,7 +6,7 @@ Exercise 1 -- String Length / RuneScape Case
 ```c
 #include <stdio.h>
 
-int strlen(char *str)
+int stringlen(char *str)
 {
 	// your code here
 }
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 ```
-Write the function strlen that calculates the length of the input string (length of `"bob"` is 3), and the function RSCase that capitalizes the first character of each word (turns `"hello Bob my name is Joe"` to `"Hello Bob My Name Is Joe"`).
+Write the function stringlen that calculates the length of the input string (length of `"bob"` is 3), and the function RSCase that capitalizes the first character of each word (turns `"hello Bob my name is Joe"` to `"Hello Bob My Name Is Joe"`).
 
 Exercise 2 -- Pointer Programming
 -----
