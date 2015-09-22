@@ -18,7 +18,7 @@ void RSCase(char *str)
 
 int main(int argc, char **argv)
 {
-	char *string = "lenny writes code";
+	char string[18] = "lenny writes code";
 	printf("%d\n", strlen(string));
 	RSCase(string);
 	printf("%s\n", string);
