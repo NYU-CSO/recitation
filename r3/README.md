@@ -59,6 +59,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 ```
+Implement the function `strstr()` that takes in 3 parameters: a "haystack" string, a "needle" string, and a pointer to an integer called index. The function finds the first occurrence of the "needle" in the "haystack", and sets what `index` is pointing to to be the index where "needle" was first found, and returns a pointer to the location of the first occurrence of "needle" in "haystack." If "needle" is not found in "haystack," then the function should return a null pointer, and index should be set to -1.
 
 Exercise 4 -- The Seg Fault In Our Char Stars
 -----
