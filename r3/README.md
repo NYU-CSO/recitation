@@ -1,7 +1,88 @@
 Tutorial 3
 ==========
 
-Exercise 1 -- Debug a C program
+Exercise 1 -- String Length / RuneScape Case
+-----
+```c
+#include <stdio.h>
+
+int strlen(char *str)
+{
+	// your code here
+}
+
+void RSCase(char *str)
+{
+	// your code here (modify char *str in place)
+}
+
+int main(int argc, char **argv)
+{
+	char *string = "lenny writes code";
+	printf("%d\n", strlen(string));
+	RSCase(string);
+	printf("%s\n", string);
+	return 0;
+}
+```
+Write the function strlen that calculates the length of the input string (length of `"bob"` is 3), and the function RSCase that capitalizes the first character of each word (turns `"hello Bob my name is Joe"` to `"Hello Bob My Name Is Joe"`).
+
+Exercise 2 -- Pointer Programming
+-----
+```c
+int  count = 10, *temp, sum = 0;
+temp = &count;
+*temp = 20;
+temp = &sum;
+*temp = count;
+printf("count = %d, *temp = %d ,sum = %d\n", count, *temp, sum);
+```
+What is the output of this code (without running it explicitly)?
+
+Exercise 3 -- Strstr
+-----
+```c
+#include <stdio.h>
+
+char *strstr(char *haystack, char *needle, int *index)
+{
+	// your code here
+}
+
+int main(int argc, char **argv)
+{
+	char *bigstring = "look at our code, our code is amazing";
+	char *smallstring = "our code";
+	int index;
+	char *substring = strstr(bigstring, smallstring, &index);
+	printf("substring: %s\nindex: &d\n", substring, index);
+	return 0;
+}
+```
+
+Exercise 4 -- The Seg Fault In Our Char Stars
+-----
+Lenny wanted to check his understanding of strings in C and pointers, and he wrote the following code
+
+```c
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+	char **s;
+	char foo[] = "Hello World";
+
+	*s = foo;
+	printf("s is %s\n", s);
+
+	s[0] = foo;
+	printf("s[0] is %s\n", s[0]);
+	return 0;
+}
+```
+What happens with this program is run? Can you figure out on what line the error(s) occurs, and why?
+
+Exercise 5 -- Debug a C program
 -----
 
 Lenny is asked to write a program that turn an array of integers in little
@@ -49,25 +130,3 @@ void main()
 	printf("The first element of the flipped arrays is %08x\n", array[0]);
 }
 ```
-
-Exercise 2 -- Segmentation Fault
------
-Lenny wanted to check his understanding of strings in C and pointers, and he wrote the following code
-
-```c
-#include <stdio.h>
-
-int main(int argc, char **argv)
-{
-	char **s;
-	char foo[] = "Hello World";
-
-	*s = foo;
-	printf("s is %s\n", s);
-
-	s[0] = foo;
-	printf("s[0] is %s\n", s[0]);
-	return 0;
-}
-```
-What happens with this program is run? Can you figure out on what line the error(s) occurs, and why?
