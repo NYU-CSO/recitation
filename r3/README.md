@@ -30,12 +30,12 @@ Write the function strlen that calculates the length of the input string (length
 Exercise 2 -- Pointer Programming
 -----
 ```c
-int  count = 10, *temp, sum = 0;
+int count = 10, *temp, sum = 0;
 temp = &count;
 *temp = 20;
 temp = &sum;
 *temp = count;
-printf("count = %d, *temp = %d ,sum = %d\n", count, *temp, sum);
+printf("count = %d, *temp = %d, sum = %d\n", count, *temp, sum);
 ```
 What is the output of this code (without running it explicitly)?
 
