@@ -89,7 +89,7 @@ Exercise 5 -- Debug a C program
 Lenny is asked to write a program that turn an array of integers in little
 endian representation into an array of integers in big endian format.  His
 C code is the file `buggyendian.c`.   What should the program print out
-if Lenny's code were correct? Compile `buggyendian.c` (do `gcc -std=c99 buggyendian.c`)
+if Lenny's code were correct? Compile `buggyendian.c` (do `gcc -g -std=c99 buggyendian.c`)
 and run it (`./a.out`).  Does Lenny's program print out the correct value?
 
 Please debug Lenny's program.  Unlike solving a math problem, we don't debug
