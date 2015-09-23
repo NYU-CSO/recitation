@@ -15,7 +15,7 @@ EndianFlip(int number) {
 	number = *(int *)tmp;
 }
 
-int main(int argv, char **argv)
+int main(int argc, char **argv)
 {
 	int array[5] = {1,2,3,4,5};
 
