@@ -119,7 +119,7 @@ EndianFlip(int number) {
 	number = *(int *)tmp;
 }
 
-void main()
+int main(int argc, char **argv)
 {
 	int array[5] = {1,2,3,4,5};
 
@@ -128,5 +128,6 @@ void main()
 	}
 
 	printf("The first element of the flipped arrays is %08x\n", array[0]);
+    return 0;
 }
 ```
