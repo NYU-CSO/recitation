@@ -44,7 +44,7 @@ Exercise 3 -- Strstr
 ```c
 #include <stdio.h>
 
-char *strstr(char *haystack, char *needle, int *index)
+char *strstr(char *haystack, char *needle)
 {
 	// your code here
 }
@@ -53,13 +53,12 @@ int main(int argc, char **argv)
 {
 	char *bigstring = "look at our code, our code is amazing";
 	char *smallstring = "our code";
-	int index;
-	char *substring = strstr(bigstring, smallstring, &index);
-	printf("substring: %s\nindex: &d\n", substring, index);
+	char *substring = strstr(bigstring, smallstring);
+	printf("substring: %s\n", substring);
 	return 0;
 }
 ```
-Implement the function `strstr()` that takes in 3 parameters: a "haystack" string, a "needle" string, and a pointer to an integer called index. The function finds the first occurrence of the "needle" in the "haystack", and sets what `index` is pointing to to be the index where "needle" was first found, and returns a pointer to the location of the first occurrence of "needle" in "haystack." If "needle" is not found in "haystack," then the function should return a null pointer, and index should be set to -1.
+Implement the function `strstr()`. It takes 2 parameters: a _haystack_ string, and a _needle_ string. The function finds the first occurrence of the _needle_ string in the _haystack_ string, and returns a pointer to the location of this first occurrence. If _needle_ is not found in _haystack_, then the function should return a null pointer.
 
 Exercise 4 -- The Seg Fault In Our Char Stars
 -----
