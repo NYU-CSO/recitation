@@ -23,7 +23,7 @@ join(int num_strings, char *strings[], char *separator)
 		start += strlen(strings[i]);
 		strcpy(start, separator);
 	}
-	//to make sure i have not copies more than allocated number of bytes
+	//to make sure i have not copied more than the allocated number of bytes
 	assert((start - result) <= total_len);
 	return result;
 }

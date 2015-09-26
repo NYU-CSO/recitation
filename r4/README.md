@@ -23,7 +23,7 @@ join(int num_strings, char *strings[], char *separator)
 		start += strlen(strings[i]);
 		strcpy(start, separator);
 	}
-	//to make sure i have not copies more than allocated number of bytes
+	//to make sure i have not copied more than the allocated number of bytes
 	assert((start - result) <= total_len);
 	return result;
 }
@@ -47,10 +47,21 @@ is no ``join`` facility whereby programmers can combine many strings together
 into a single one.  Your professor implemented join function, shown above, but 
 it does not seem to work right. For example, when she types `./a.out hello world` 
 The program prints out `Joined arguments are: ./a.outhelloworld*` whereas the 
-correct one should be `Joined arguments are: ./a.out*hello*world*`. Rumor also
+correct output should be `Joined arguments are: ./a.out*hello*world*`. Rumor also
 has it that she's not doing malloc right. Please help her debug `join.c`. Tell us 
 what steps you took to pinpoint the bug. We are interested.
 
 
+Exercise 2 -- Binary Tree Mon Amour 
+-----
 
+You are starting at your first internship job at company C-Lover.  Someone else
+has written a set of C functions that implements a binary tree.  The function
+`insert` inserts a value into the binary tree.  The function `exists` searches
+the tree for the specified value. If the value is found in the tree, it returns
+1, otherwise it returns zero.  These functions are available in `tree.c`
 
+Please design and write some code to test the correctness of the binary tree
+operations.  For simplicity, you can write these tests in the `main` function.
+Show us your test code.  If our `tree.c` does not pass your test, debug it
+and tell us the steps you took to eventually emerge victorious. 
