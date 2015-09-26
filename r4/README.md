@@ -38,7 +38,7 @@ main(int argc, char *argv[])
 In the last tutorial, we have asked you to implement various common functions to manipulate string, 
 such as computing the length of a string, etc.  The C's standard library already includes many 
 useful string functions that one can readily use. Just type `man string` to see a list of 
-such string functions. Say, you want to use `strlen`, include the `string.h` header file and 
+such string functions. Say, you want to use `strlen`, add the line `#include <string.h>` and 
 type `man strlen` to see its documentation.
 
 C's string library is quite spartan, compared with the string libraries
