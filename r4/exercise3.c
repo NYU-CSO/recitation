@@ -23,6 +23,7 @@ void editCharAt(char **str, int n, char newchar)
 
 int main(int argc, char **argv)
 {
+    // we want to change 'can' to 'Can' for proper casing
     char *string = "How can Mirrors Be Real If Our Eyes Aren't Real?";
     // now call editCharAt
     printf("%s\n", string);
