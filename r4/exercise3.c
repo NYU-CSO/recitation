@@ -25,4 +25,5 @@ int main(int argc, char **argv)
     // now call editCharAt
     printf("%s\n", string);
     printf("Equality of 4 and 5: %d\n", checkEquality(4, 5));
+    return 0;
 }
