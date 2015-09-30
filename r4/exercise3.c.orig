@@ -15,6 +15,6 @@ int checkEquality(int x, int y)
 int main(int argc, char **argv)
 {
     printf("Equality of 4 and 5: %d\n", checkEquality(4, 5));
-
+    
     return 0;
 }
