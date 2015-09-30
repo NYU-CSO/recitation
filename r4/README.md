@@ -75,4 +75,4 @@ In the file `exercise3.c`, we have written a function `checkEquality` thats chec
 Exercise 4 -- Modifying Strings in Place
 -----
 
-Lenny has found a celebrity he wishes to emulate on a social media platform, and wrote a string to send out. Unfortunately, he made a mistake while writing the string. In the file `exercise4.c`, Lenny has written code to fix his mistake. He wants to edit the nth character of a string (n is 0-based) to a certain character. Boilerplate code has been provided. Write the code for `editCharAt`. You may need to use GDB to figure out why your code fails. The use of the following libraries is recommended: `string.h`, `stdlib.h`.
+Lenny found a celebrity he wishes to emulate on a social media platform, and wrote a string to send out. Unfortunately, he made a mistake while writing the string. In the file `exercise4.c`, Lenny has written code to fix his mistake. He wants to edit the nth character of a string (n is 0-based) to a certain character. Boilerplate code has been provided. Write the code for `editCharAt`. Don't forget to use GDB as a debugging tool if needed. The use of the following libraries is recommended: `string.h`, `stdlib.h`.
