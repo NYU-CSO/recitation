@@ -2,7 +2,6 @@
 
 // the character at the index "n" should be changed to newchar
 // "n" is zero-indexed
-
 void editCharAt(char **str, int n, char newchar)
 {
     // your code here
