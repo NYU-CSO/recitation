@@ -1,12 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int checkEquality(int x, int y)
 {
-    // if (x=y)
-    // the problem is that the assignment happens, and assignments are always true
-    if (x == y)
+    if (x=y)
     {
         return 1;
     }
