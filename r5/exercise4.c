@@ -18,7 +18,7 @@ int main () {
   c[1] = 8127;
   c[2] = 3355033609;
   c[3] = (unsigned int)a;
-  c[3] = (unsigned int)b;
+  c[4] = (unsigned int)b;
 
 
   // TODO QUESTIONS:
