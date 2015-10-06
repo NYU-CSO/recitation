@@ -13,7 +13,7 @@ int main () {
   int *b = (int *)malloc(sizeof(int)); 
   *b = 27;
 
-  unsigned int *c = (unsigned int *)malloc(sizeof(int) * 5);
+  unsigned int *c = (unsigned int *)malloc(sizeof(unsigned int) * 5);
   c[0] = 495;
   c[1] = 8127;
   c[2] = 3355033609;
