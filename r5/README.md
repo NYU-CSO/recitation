@@ -59,9 +59,10 @@ Reading symbols from ./a.out...done.
 (gdb) 
 ```
 
-To find out information about the `x` variable in the main function, let's stop the debugger in the main function, we 
+To find out information about the `x` variable in the main function, let's stop the debugger in the main function. To do that, we 
 use the `break` command followed by the `run` command.
 ```
+(gdb) b main
 Breakpoint 1 at 0x40056d: file main.c, line 17.
 (gdb) r
 Starting program: /home/jinyang/classes/fa15-cso/recitation/r5/a.out 
