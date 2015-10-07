@@ -35,8 +35,8 @@ int main()
 }
 ```
 
-Compile the above program `gcc -Og -g main.c` and 
-run gdb by typing `gdb ./a.out`.   Learn to use the following GDB commands:
+Compile the above program (also available as `main.c` in this directory) by typing `gcc -Og -g main.c`.
+Next, run gdb by typing `gdb ./a.out`.   Learn to use the following GDB commands:
 
 - `disass <func>` disassembles a given function or memory address. When running `disass` without arguments, it 
 disassembles the current function.
