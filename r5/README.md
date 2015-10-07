@@ -15,7 +15,7 @@ addone2(long x)
 long
 addone(long *x)
 {
-	*x++;
+	(*x)++;
 	return *x;
 }
 
