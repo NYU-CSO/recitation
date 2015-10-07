@@ -81,30 +81,7 @@ Dump of assembler code for function main:
    0x0000000000400571 <+4>:	movq   $0x1,0x8(%rsp)
    0x000000000040057a <+13>:	mov    $0x1,%edi
    0x000000000040057f <+18>:	callq  0x40055d <addone2>
-   0x0000000000400584 <+23>:	mov    %rax,%rcx
-   0x0000000000400587 <+26>:	mov    $0x1,%edx
-   0x000000000040058c <+31>:	mov    $0x400684,%esi
-   0x0000000000400591 <+36>:	mov    $0x1,%edi
-   0x0000000000400596 <+41>:	mov    $0x0,%eax
-   0x000000000040059b <+46>:	callq  0x400460 <__printf_chk@plt>
-   0x00000000004005a0 <+51>:	lea    0x8(%rsp),%rdi
-   0x00000000004005a5 <+56>:	callq  0x400562 <addone>
-   0x00000000004005aa <+61>:	mov    %rax,%rcx
-   0x00000000004005ad <+64>:	mov    0x8(%rsp),%rdx
-   0x00000000004005b2 <+69>:	mov    $0x400684,%esi
-   0x00000000004005b7 <+74>:	mov    $0x1,%edi
-   0x00000000004005bc <+79>:	mov    $0x0,%eax
-   0x00000000004005c1 <+84>:	callq  0x400460 <__printf_chk@plt>
-   0x00000000004005c6 <+89>:	mov    0x8(%rsp),%rdi
-   0x00000000004005cb <+94>:	callq  0x400562 <addone>
-   0x00000000004005d0 <+99>:	mov    %rax,%rcx
-   0x00000000004005d3 <+102>:	mov    0x8(%rsp),%rdx
-   0x00000000004005d8 <+107>:	mov    $0x400684,%esi
-   0x00000000004005dd <+112>:	mov    $0x1,%edi
-   0x00000000004005e2 <+117>:	mov    $0x0,%eax
-   0x00000000004005e7 <+122>:	callq  0x400460 <__printf_chk@plt>
-   0x00000000004005ec <+127>:	add    $0x18,%rsp
-   0x00000000004005f0 <+131>:	retq   
+   ...
 ```
 
 As we can see in the above output, the next instruction to be executed has an arrow next to it.
