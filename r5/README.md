@@ -38,10 +38,10 @@ int main()
 Compile the above program `gcc -Og -g main.c` and 
 run gdb by typing `gdb ./a.out`.   Learn to use the following GDB commands:
 
-- `disass <func>` disassembles a given function or memory address
-- `disass` disassembles the current function (an arrow on the left-hand side shows the next instruction to be executed)
-- `x/i <address>` examines the address
-- `p/x $rax` prints the %rax register. you can print out other registers too. e.g. `p/x $rip`
+- `disass <func>` disassembles a given function or memory address. When running `disass` without arguments, it 
+disassembles the current function.
+- `x/i <address>` prints the content of the address as an assembly instruction.
+- `p/x $rax` prints the %rax register. you can print out other registers too. e.g. `p/x $rip`. Yup, use the `$` prefix instead of `%` prefix. It's annoying, i know.
 - `info registers` prints out the current values of all registers and the condition codes (see under eflags)
 - `nexti` executes the next assembly instruction (`next` executes the next C statement)
 - `break <func>` causes the debugger to stop when a given function is entered.
