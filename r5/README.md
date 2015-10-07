@@ -130,7 +130,6 @@ memory location `0x8(%rsp)` stores variable x, because line 18 of `main.c` initi
 Now let's execute the `movq` instruction and print out the address and content of `0x8(%rsp)`.
 ```
 (gdb) nexti
-(gdb) nexti
 21		rx = addone2(x);
 => 0x000000000040057a <main+13>:	bf 01 00 00 00	mov    $0x1,%edi
    0x000000000040057f <main+18>:	e8 d9 ff ff ff	callq  0x40055d <addone2>
