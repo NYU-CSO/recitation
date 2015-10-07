@@ -2,6 +2,8 @@ Tutorial 4
 ==========
 Exercise 1 -- Understanding assembly and C with GDB
 -----
+
+The goal of this exercise is to run and examine the assembly code using GDB to solidify your understanding of C.
 ```c
 long
 addone2(long x)
@@ -33,11 +35,8 @@ int main()
 }
 ```
 
-Compile the above `main.c` program (also available in the current directory) using 
-command `gcc -Og -g main.c`.  Run it. Can you explain the output?
-
-Now let's examine the assembly code using GDB to solidify our understanding of C.
-Run gdb by typing `gdb ./a.out`.   The following GDB commands are crucial here:
+Compile the above program `gcc -Og -g main.c` and 
+run gdb by typing `gdb ./a.out`.   Learn to use the following GDB commands:
 
 - `disass <func>` disassembles a given function or memory address
 - `disass` disassembles the current function (an arrow on the left-hand side shows the next instruction to be executed)
