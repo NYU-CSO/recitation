@@ -85,8 +85,8 @@ Dump of assembler code for function main:
 ```
 
 As we can see in the above output, the next instruction to be executed has an arrow next to it.
-And based on the dissembled output, the next instruction has an address `0x000000000040056d`.
-And this is what the content of the %eip register should be. Let's check that it indeed is 
+And based on the dissembled output, the next instruction is stored at memory address `0x000000000040056d`.
+And this should be the value of the %rip register. Let's check that it indeed is 
 the case.
 
 ```
