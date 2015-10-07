@@ -108,7 +108,7 @@ to display the next assembly instruction to execute.  Fortunately, I can configu
 (gdb) set disassemble-next-line on
 ```
 
-Now, I'll restart the program and executes the first assembly instruction of main again.
+Now, I'll restart the program and executes the first assembly instruction of the `main` function again.
 ```
 (gdb) r
 The program being debugged has been started already.
