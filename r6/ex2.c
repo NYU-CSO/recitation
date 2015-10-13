@@ -39,7 +39,7 @@ main(int argc, char **argv)
 	}
 	int iter = atoi(argv[1]);
 
-	///insert iter nodes into a linked list
+	//insert iter nodes into a linked list
 	node *head = NULL;
 	for (int i = iter; i >= 0; i--) {
 		node *n = (node *)malloc(sizeof(node));
@@ -50,7 +50,7 @@ main(int argc, char **argv)
 	printf("successfully inserted %d nodes to linked list\n", iter);	
 	
 
-	/insert iter nodes into another linked list
+	//insert iter nodes into another linked list
 	head = NULL;
 	for (int i = 0; i <= iter; i++) {
 		node *n = (node *)malloc(sizeof(node));

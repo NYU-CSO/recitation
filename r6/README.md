@@ -1,6 +1,6 @@
 Tutorial 6
 ==========
-Exercise 1 -- Understanding assembly and C with GDB
+Exercise 1 -- Where are my local variables?
 -----
 ```c
 #include <stdio.h>
@@ -63,7 +63,7 @@ Now, use gdb in your detective work and answer the following questions:
 - How does the character buffer `str` become initialized with "hello world" in each of the four functions? 
 
 ==========
-Exercise 2 -- Understanding assembly and C with GDB
+Exercise 2 -- Down the recursive rabbit hole
 -----
 
 Read the C program in `ex2.c`.  The function `insert` inserts a node into the linked list such that 
@@ -140,6 +140,6 @@ Segmentation fault
 ```
 
 Answer the following questions, using gdb.
-- Please explain this output.  When exactly did the program incur a segmentation fault? Why?
+- Please explain this output.  Which instruction cause the program to incur a segmentation fault? Why?
 - Calculate the size of each stack frame. Run the command `ulimit -a` to figure out the stack size limit. Using some back-of-the-envelope-calculation, what is the smallest `iter` that you would expect the program to encounter a segmentation fault?  Does the actual execution match your calculation?
 
