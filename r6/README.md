@@ -91,14 +91,15 @@ insert(node **headp, node *n)
 }
 ```
 
-In the body of the `main` function, I inserted `iter` number of nodes into a linked list in two ways (in 
-two `for` loop code blocks)
+The `main` function inserts `iter` number of nodes into a linked list in _two_ ways (corresponding to 
+the two `for` loop code blocks)
 
 ```c
 int 
 main(int argc, char **argv)
 {
 	...
+	//insert iter nodes into a linked list
 	node *head = NULL;
 	for (int i = iter; i >= 0; i--) {
 		node *n = (node *)malloc(sizeof(node));
@@ -106,6 +107,7 @@ main(int argc, char **argv)
 		insert(&head, n);
 	}
 	...
+	//insert iter nodes into another linked list
 	head = NULL;
 	for (int i = 0; i <= iter; i++) {
 		node *n = (node *)malloc(sizeof(node));
