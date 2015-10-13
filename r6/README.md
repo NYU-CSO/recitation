@@ -52,7 +52,10 @@ void main() {
 
 ```
 
-Compile the above program (also available as `ex1.c` in this directory) by typing `gcc -std=c99 -g -fno-stack-protector -fomit-frame-pointer ex1.c`
+Compile the above program (also available as `ex1.c` in this directory) by typing 
+```
+$ gcc -std=c99 -g -fno-stack-protector -fomit-frame-pointer ex1.c`
+```
 Ignore the gcc warnings.  Run `./a.out`. Can you explain the output?
 
 Now, use gdb in your detective work and answer the following questions:
