@@ -54,7 +54,7 @@ void main() {
 
 Compile the above program (also available as `ex1.c` in this directory) by typing 
 ```
-$ gcc -std=c99 -g -fno-stack-protector -fomit-frame-pointer ex1.c`
+$ gcc -std=c99 -g -fno-stack-protector -fomit-frame-pointer ex1.c
 ```
 Ignore the gcc warnings.  Run `./a.out`. Can you explain the output?
 
@@ -113,7 +113,10 @@ main(int argc, char **argv)
 }
 ```
 
-Compile and run the program by typing `gcc  -std=c99 -g -fno-stack-protector -fomit-frame-pointer ex2.c`.
+Compile and run the program by typing 
+```
+$ gcc  -std=c99 -g -fno-stack-protector -fomit-frame-pointer ex2.c
+```
 Now run the program and insert different number of nodes into the linked list.
 ```
 $ ./a.out 10
