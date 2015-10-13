@@ -13,13 +13,16 @@ insert(node **headp, node *n)
 {
 	char buf[100];
 	node *head = *headp;
-	if (!head) { //if head pointer is null, make n the new head
+	if (!head) { 
+		//if head is null, make n the new head
 		n->next = NULL;
 		*headp = n;
-	}else if (head->v > n->v) { //if head node's value is bigger than n, insert n in front of head node
+	}else if (head->v > n->v) { 
+		//if head's value is bigger than n, insert n in front of head 
 		n->next = head;
 		*headp = n;
-	}else { //if head node's value is smaller than n, recurse
+	}else { 
+		//if head's value is smaller than n, recurse
 		insert(&head->next, n);
 	}
 }
