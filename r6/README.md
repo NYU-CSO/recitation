@@ -60,7 +60,7 @@ Ignore the gcc warnings.  Run `./a.out`. Can you explain the output?
 
 Now, use gdb in your detective work and answer the following questions:
 - What is the _value_ of `str` in the four functions `get_str1` `get_str2` `get_str3` `get_str4`, respectively?
-- How does the character buffer `str` become initialized with "hello world"? 
+- How does the character buffer `str` become initialized with "hello world" in each of the four functions? 
 
 ==========
 Exercise 2 -- Understanding assembly and C with GDB
