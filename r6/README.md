@@ -68,7 +68,7 @@ Exercise 2 -- Understanding assembly and C with GDB
 
 Read the C program in `ex2.c`.  The function `insert` inserts a node into the linked list such that 
 the overall linked list is sorted in ascending order.
-```
+```c
 //insert node n into the (ascending) sorted linked list 
 // whose head pointer is pointed to by headp
 void
