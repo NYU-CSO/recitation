@@ -47,7 +47,7 @@ int main()
     increment(c + 1);
     increment(c + 2);
     increment(c + 3);
-    // this increments the actual pointer, but has no effect on b itsel
+    // this increments the actual pointer, but has no effect on b itself
     increment(c + 4);
     // this increments b, but do not call it if the above was called
     // as c + 4 will be an address, but we do not have explicit access to it
