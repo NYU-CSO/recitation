@@ -1,6 +1,8 @@
 Practice Midterm Solutions
 -----
 
+The practice midterm questions can be found at http://news.cs.nyu.edu/~jinyang/fa15-cso/notes/mockmid.pdf
+
 Problem 1:
 ---
 Binary representation of 0 is just `0`, or in six bits, `00 0000`.
@@ -29,28 +31,28 @@ int sum_element(int i, int j)
 }
 ````
 ````
-movslq %esi, %rsi
+movslq  %esi, %rsi
 # holds the second parameter j
 
-movslq %edi, %rdi
+movslq  %edi, %rdi
 # holds the first parameter i
 
-leaq (%rsi,%rdi,8), %rdx
+leaq    (%rsi,%rdi,8), %rdx
 # rdx = rsi + 8*rdi = j + 8i
 
-leaq (%rdi,%rdi,4), %rax
+leaq    (%rdi,%rdi,4), %rax
 # rax = rdi + 4*rdi = 5*rdi = 5i
 
-leaq (%rdi,%rax,2), %rax
+leaq    (%rdi,%rax,2), %rax
 # rax = rdi + 2*rax = i + 2*5i = 11i
 
-addq %rax, %rsi
+addq    %rax, %rsi
 # rsi = rsi + rax = j + 11i
 
-movl mat2(,%rsi,4), %eax
-# eax = *(mat2 + 4*rsi), or equivalent mat2[rsi] if we know mat2 is an array holding 4 byte values (which it is, ints)
+movl    mat2(,%rsi,4), %eax
+# eax = *(mat2 + 4*rsi), or equivalent mat2[rsi] if we know mat2 is an array holding 4 byte values (ints)
 
-addl mat1(,%rdx,4), %eax
+addl    mat1(,%rdx,4), %eax
 # eax = eax + *(mat1 + 4*rdx), similar to above
 
 ret
@@ -65,15 +67,15 @@ Therefore for `mat2`, we use the equation `j+11i` to get to any arbitrary point 
 Problem 3:
 ---
 ````
-movl %edi, %eax
+movl    %edi, %eax
 # edi is our parameter a
 # eax = edi
 
-sall $5, %eax
+sall    $5, %eax
 # eax = eax << 5 (sall is shift arithmetic left long)
 # or simply, eax = eax * 2^5 = 32*eax (which holds 32*a)
 
-subl %edi, %eax
+subl    %edi, %eax
 # eax = eax - edi
 # eax = 32*a - a = 31*a
 
@@ -84,9 +86,136 @@ Therefore the function is `fun1`.
 
 Problem 4:
 ---
+We will define the top of the stack as the highest address, and the bottom of the stack as the lowest address for the purposes of this problem. That means at the start of any function call, `(%rsp)` is the bottom of the stack.  
+Also, note that `1073741824` is `2^30`.  
+
+````
+movq    $-1, -16(%rsp)
+# allocate 16 bytes below (%rsp) and fill it with -1 (this is all 1 in binary)
+# this is the same as allocating 16 bytes below the bottom of the stack (note that %rsp isn't actually modified)
+
+movslq  %edi, %rdi
+# this is the argument i
+
+movl    $1, -24(%rsp,%rdi,4)
+# *(rsp + 4*rdi - 24) = 1
+# the 1 is supposed to mean the value 2^30
+# if we know that rdi is the index i of the array s.a, then the array s.a must start at rsp - 24
+
+movq    -16(%rsp), %rax
+# the return value is a double, and so rsp - 16 must hold the double s.d
+
+ret
+````
+A.  
+`s` is stored on the stack. Then the integer array `s.a` is stored at `rsp - 24`, and the double `s.d` is stored at `rsp - 16`.  
+B.  
+`fun(1)` will return `s.d`, as `fun(1)` modifies `s.a[1]`. `fun(2)` will return some unknown value, as `fun(2)` modifies `s.a[2]` which is actually the least significant 4 bytes of `s.d`.  
+C.  
+The return address of where this function should return to is stored at `(%rsp)`, otherwise how would the program know where to return to (`%rip` holds the current instruction)?  
+D.  
+Calling `fun(6)` will modify the least significant 4 bytes of `(%rsp)`, or the return address (the equation (`%rsp + 4*%rdi - 24` yields `%rsp` if `%rdi` is `6`)). This will lead to unpredictable behavior (most likely a segmentation fault) when the function returns.
 
 Problem 5:
 ---
+A.  
+This `BigInt x` corresponds to a short `0x8000`, or decimal value `8*16^3`, or `32768`.  
+B.  
+````c
+BigInt
+add(BigInt a, BigInt b)
+{
+  BigInt c;
+  /* compute c = a + b */
+
+  // we can add the low and high order bits together
+  c.low = a.low + b.low;
+  c.high = a.high + b.high;
+
+  // but we need to keep track of the carry of the highest bit of c.low
+  // as a challenge, we will limit ourselves to only the char data type for this function (if we used shorts, this would be much simpler)
+  // if the highest bits of a.low and b.low are both 1, then a carry exists
+  // if the highest bits of a.low and b.low are both 0, then no carry exists
+  // if the highest bit of a.low is 1 but the lowest bit of b.low is 0, then a carry exists if the highest bit of c.low is 0
+  unsigned char alowshigh = a.low >> 4;
+  unsigned char blowshigh = b.low >> 4;
+  unsigned char clowshigh = c.low >> 4;
+  if ((alowshigh == 1) && (blowshigh == 1))
+  {
+    c.high++;
+  }
+  if ((alowshigh ^ blowshigh) == 1) // ^ is XOR
+  {
+    if (clowshigh == 0)
+    {
+      c.high++;
+    }
+  }
+
+  return c;
+}
+
+BigInt sub(BigInt a, BigInt b)
+{
+  BigInt c;
+  /* compute c = a - b */
+
+  // we apply the idea that a - b is just a + (-b)
+  // and -b is just b's bits flipped and then add 1
+
+  // flip b's bits
+  BigInt bflip;
+  bflip.high = ~b.high;
+  bflip.low = ~b.low;
+
+  BigInt one;
+  one.high = 0;
+  one.low = 1;
+
+  // then add 1
+  bflip = add(bflip, one);
+
+  c = add(a, bflip);
+
+  return c;
+}
+````
+C.  
+````c
+short
+BigInt_to_short(BigInt a)
+{
+  short x;
+  /* convert BigInt a to a short (16-bit) integer */
+
+  // low order bits remain the same
+  x = a.low
+
+  // then we just add on the high order bits
+  // but they need to be shifted to their appropriate slot
+  x += (a.high << 8);
+
+  return x;
+}
+
+BigInt
+short_to_BigInt(short x)
+{
+  BigInt a;
+  /* convert short integer x to BigInt representation */
+
+  // implicit cast from short to char/unsigned char occurs
+
+  // the low order bits are the right-most 8 bits
+  a.low = (x & 0xff);
+
+  // the high order bits are the left-most 8 bits
+  // we can apply the same logic as low once they are in the correct slot
+  a.high = ((x >> 8) & 0xff);
+
+  return a;
+}
+````
 
 Problem 6:
 ---
