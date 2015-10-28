@@ -100,4 +100,31 @@ A.
 `a & 0x1f` gives us the last 5 bits of a. This is exactly the remainder when `a` is divided by 32 (works)
 
 B. The best way to solve this one is to set `i` to be some value, and see if the output matches.  
-`1 << i` puts a 1 in the `(32-i)`th spot (if the left most spot is defined as spot 1), and 0 everywhere else (doesn't work)
+`1 << i` puts a 1 in the `(32-i)`th spot (if the left most spot is defined as spot 1), and 0 everywhere else (doesn't work)  
+`(1 << i) - 1` if we let `i` be 5, then `1 << i` is `0000 0000 0000 0000 0000 0000 0010 0000`. Then `(1 << i) - 1` is `0000 0000 0000 0000 0000 0000 0001 1111`. This is an opposite of what we want (right-most `i` bits are 1) (doesn't work)  
+`((1 << i) - 1) << (32 - i)` we take what we have above, and given `i` is still 5, this gives us `1111 1000 0000 0000 0000 0000 0000 0000`, which is what we want (works)  
+`1 << (32 - i) - 1` be careful on order of operations (shift happens before the subtraction of 1). Let `i` be 27, then `1 << (32 - i)` is `0000 0000 0000 0000 0000 0000 0010 0000`. Then subtracting 1 yields `0000 0000 0000 0000 0000 0000 0001 1111`. This is an opposite of what we want (bits are flipped) (doesn't work)  
+`~((1 << (32 - i)) - 1)` this is the negated version of above, which works  
+`0xf8000000` this is a constant value. If we let `i` be 32, then we should get a bit string of all `1`, which this is not (doesn't work)
+
+C.
+Floats are stored in memory as follows: 1 bit for sign, 8 bits for exponent, and 23 bits for mantissa. If our float is `-2.05`, then the sign bit must be `1`. If we reinterpret this binary form as a signed integer, then the signed integer must be negative. So the answer cannot be `1`, `2`, or `2.05`. If we look at the binary form of the signed integer `-1`, this is the bit string of all `1`. That means if we reinterpret this as a float, then the exponent field is all `1`, which corresponds to `NaN` (not a number). So the answer is not `-1`. For `-2`, the binary form is only changed in the least significant 2 digits, so the exponent field remains all `1`. Then `-2` is also not an answer. Therefore the answer is `none of the above`.
+
+D. Don't forget how pointer arithmetic works
+````c
+int *p;
+char *q;
+p = (int *)1;
+// this line implies that p holds the address 1
+// it does not mean p points to the number 1
+
+p++;
+// if p pointed to an integer that was at address 1, and then p is pointing to the next integer, the next integer is located at address 1 + sizeof(int) = 1 + 4 = 5
+
+q = (char *)(p+2);
+// p + 2 means the 2nd integer after the current one; if p points to an integer located at address 5, then the 2nd integer after it is at address 13. Then we simply treat this new address as an address that holds a character, so q is 13
+````
+Therefore the answer is `p = 5, q = 13`.
+
+E.
+The swap method is meaningless. The only variables swapped (and they aren't even swapped, the swap is written incorrectly) are the local ones on the stack. Pointers aren't passed into the function, but rather then integers themselves. So whatever happens in the swap is local to the swap function. Then the values remain as they were in the main function. Therefore the answer is `a = 1, b = 2`.
