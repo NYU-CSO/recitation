@@ -119,7 +119,7 @@ Calling `fun(6)` will modify the least significant 4 bytes of `(%rsp)`, or the r
 Problem 5:
 ---
 A.  
-This `BigInt x` corresponds to a short `0x8000`, or decimal value `8*16^3`, or `32768`.  
+This `BigInt x` corresponds to a short `0x8000`, or binary value `1000 0000 0000 0000`, or `-32768` (if we flip the bits and add 1, we get `1000 0000 0000 0000`, which is `32768`, so then this number must be `-32768`).  
 B.  
 ````c
 BigInt
