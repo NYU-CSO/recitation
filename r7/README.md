@@ -137,9 +137,9 @@ add(BigInt a, BigInt b)
   // if the highest bits of a.low and b.low are both 1, then a carry exists
   // if the highest bits of a.low and b.low are both 0, then no carry exists
   // if the highest bit of a.low is 1 but the lowest bit of b.low is 0, then a carry exists if the highest bit of c.low is 0
-  unsigned char alowshigh = a.low >> 4;
-  unsigned char blowshigh = b.low >> 4;
-  unsigned char clowshigh = c.low >> 4;
+  unsigned char alowshigh = a.low >> 7;
+  unsigned char blowshigh = b.low >> 7;
+  unsigned char clowshigh = c.low >> 7;
   if ((alowshigh == 1) && (blowshigh == 1))
   {
     c.high++;
