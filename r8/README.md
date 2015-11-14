@@ -3,7 +3,7 @@
 
 ### Basic Linker knowledge
 
-The `list` file implements a minimal linked list. compile the `list.c` file included in this directory using command `gcc -std=gnu99 list.c`. Explain the errors produced.  Fix them to produce the object file `list.o`
+The `list.c` file in this directory implements a simple linked list. Compile this file using command `gcc -std=gnu99 list.c`. Explain the errors produced.  Fix them to produce the object file `list.o`
 
 Compile the `main.c` file included in this directory using command `gcc -std=gnu99 main.c`.
 Explain the errors produced. Fix them to produce the object file `main.o`.
@@ -31,12 +31,12 @@ Lastly, run `nm ./a.out`. Which previously undefined symbols have now become def
 
 ### Linker and Shared library
 
-We examine the shared library to be loaded with `./a.out` using the UNIX tool `ldd` (do `man ldd`).
+We can examine the shared library to be loaded with `./a.out` using the UNIX tool `ldd` (do `man ldd`).
 Type `ldd ./a.out` and find out the pathname of the shared library file that
 correspond to C standard library.
 
-Now, let's examine the symbols defined in the C library to see if the remaining undefined symbols in 
-`./a.out` can indeed be found there. Type `nm -D <filename>` to list dynamic symbols.
+Now, let's examine the symbols defined in the C library to see if the remaining undefined symbols of  
+`./a.out` can indeed be found there. Type `nm -D <filename>` to list dynamic symbols.  Did you find what you are looking for?
 
 
 ### Programming errors in the linking process

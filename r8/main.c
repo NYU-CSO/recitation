@@ -1,8 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "list.h"
-
 int n_inserts = 0;
 int n_deletes = 0;
 
