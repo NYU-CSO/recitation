@@ -1,5 +1,5 @@
 
-# Exercise 1
+# Exercise 1 Linking
 
 ### Basic Linker knowledge
 
@@ -42,3 +42,33 @@ Now, let's examine the symbols defined in the C library to see if the remaining 
 ### Programming errors in the linking process
 
 Now let's turn our attention to the actual output of `./a.out`.  The program inserts 100 linked list nodes and then deletes half of them.  Explain why the output statistics are so out of whack. Fix the errors.
+
+
+# Exercise 2: Fork and Exec
+
+Ben Bitdiddle's boss asks him to sort a file `biblewords.txt` included in this directory. After 
+attending last week's lecture, Ben decides to speed up the sorting process by having multiple 
+processes simultaneously sort the file.  Ben's machine has many cores, so
+spawning multiple processes allows multiple CPU cores to be utilized for
+sorting.
+
+Ben's program, `multisort.c`, is included in this directory. Compile and run it to sort the words in 
+file `testwords.txt` as follows:
+
+```
+$ gcc -std=gnu99 -g multisort.c
+$ ./a.out out < testwords.txt
+```
+
+Please explain why the output file `out` does not appear to be sorted as expected.
+
+### Fixing Ben's multi-process program
+
+One way to fix Ben's program is to pass data/results between different processes using the file system.One process can create files that are later read by another process. Fix Ben's `multisort.c` program using this general idea.  Test it using the small words file `testwords.txt`. Also test it using the large words file `biblewords.txt`.
+
+### Exec a different program
+Create a different multi-process sort program to invoke the binary program `sort` (you need to invoke it with the option `-n` to sort alphabetically) to sort the words (instead of writing our own sort facility using `qsort`).
+
+Hint: You can manually split the input file into two files each containing half of the words in the original file. Each process can then sort different split files.
+
+Hint: You still need to invoke the `mergewords` function to merge the two sorted intermediate files.
