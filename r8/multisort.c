@@ -11,12 +11,13 @@
 #define MAXWORDSZ 100
 
 int 
-readwords(char **words)
+readwords(char **words, char *inputfile)
 {
+	FILE *fp = fopen(inputfile, "r");
 	int n_words = 0;
 	while (1) {
 		char *word = (char *)malloc(MAXWORDSZ);
-	        if (!fgets(word, MAXWORDSZ, stdin)) {
+	        if (!fgets(word, MAXWORDSZ, fp)) {
 			break;
 		}
 		if (word[strlen(word)-1] != '\n') {
@@ -26,6 +27,7 @@ readwords(char **words)
 		n_words++;
 		assert(n_words < MAXLINE);
 	}
+	fclose(fp);
 	return n_words;
 }
 
@@ -34,28 +36,25 @@ mergewords(char **l1, int l1_len, char **l2, int l2_len, char *outfile)
 {
 	int l1_ind = 0;
 	int l2_ind = 0;
-
-	FILE *fp = fopen(outfile, "w");
 	while (l1_ind < l1_len && l2_ind < l2_len) {
 		if (strncmp(l1[l1_ind], l2[l2_ind], MAXWORDSZ) < 0) {
-			fprintf(fp, "%s", l1[l1_ind]);
+			printf("%s", l1[l1_ind]);
 			l1_ind++;
 		}else {
-			fprintf(fp, "%s", l2[l2_ind]);
+			printf("%s", l2[l2_ind]);
 			l2_ind++;
 		}
 
 	}
 	while (l1_ind < l1_len) {
-		fprintf(fp, "%s", l1[l1_ind]);
+		printf("%s", l1[l1_ind]);
 	       	l1_ind++;
 	}
 
 	while (l2_ind < l2_len) {
-		fprintf(fp, "%s", l2[l2_ind]);
+		printf("%s", l2[l2_ind]);
 	       	l2_ind++;
 	}
-	fclose(fp);
 }
 
 int
@@ -69,12 +68,12 @@ main(int argc, char **argv)
 {
 
 	if (argc < 2) {
-		printf("usage: ./multisort outputfile < inputfile\n");
+		printf("usage: ./multisort inputfile > outfile \n");
 		exit(1);
 	}
 
 	char **words = (char **)malloc(sizeof(char *)*MAXLINE);
-	int n_words = readwords(words);
+	int n_words = readwords(words, argv[1]);
 
 	int start = 0;
 	int len = n_words;
@@ -84,12 +83,12 @@ main(int argc, char **argv)
 		//parent sort the first half of the [start, start + len] section of words
 		len = len/2;
 		qsort(words + start, len, sizeof(char *), qsort_cmp);
-		printf("pid-%d has sorted [%d, %d)\n", getpid(), start, start + len);
+		fprintf(stderr, "pid-%d has sorted [%d, %d)\n", getpid(), start, start + len);
 	} else {
 		start = start + len/2;
 		len = len - len/2;
 		qsort(words + start, len, sizeof(char *), qsort_cmp);
-		printf("pid-%d has sorted [%d, %d)\n", getpid(), start, start + len);
+		fprintf(stderr, "pid-%d has sorted [%d, %d)\n", getpid(), start, start + len);
 		exit(0);
 	}
 
@@ -97,10 +96,9 @@ main(int argc, char **argv)
 	int status;
 	waitpid(pid, &status, 0);
 
-	printf("both sorting has finished\n");
+	fprintf(stderr, "both sorting has finished\n");
+	fprintf(stderr, "merging both lists\n\n\n");
 
 	//merge the two sorted list into one
 	mergewords(words, n_words/2, words+(n_words/2), n_words-(n_words/2), argv[1]);
-	
-	printf("merged two lists into one file %s\n", argv[1]);
 }

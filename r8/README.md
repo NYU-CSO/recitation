@@ -57,18 +57,18 @@ file `testwords.txt` as follows:
 
 ```
 $ gcc -std=gnu99 -g multisort.c
-$ ./a.out out < testwords.txt
+$ ./a.out testwords.txt > out
 ```
 
-Please explain why the output file `out` does not appear to be sorted as expected.
+Please explain why the content of the output file `out` does not appear to be sorted as expected.
 
 ### Fixing Ben's multi-process program
 
 One way to fix Ben's program is to pass data/results between different processes using the file system.One process can create files that are later read by another process. Fix Ben's `multisort.c` program using this general idea.  Test it using the small words file `testwords.txt`. Also test it using the large words file `biblewords.txt`.
 
 ### Exec a different program
-Create a different multi-process sort program to invoke the binary program `sort` (you need to invoke it with the option `-n` to sort alphabetically) to sort the words (instead of writing our own sort facility using `qsort`).
+Create a different multi-process sort program called `multisort2.c` which invokes the binary program `sort` to sort the words instead of implementing our own sort facility using `qsort`. Type `man sort` to see how to use `sort`. Specifically you'll need the `-n` option to sort lines alphabetically.
 
-Hint: You can manually split the input file into two files each containing half of the words in the original file. Each process can then sort different split files.
+Hint: You can manually split the input file into two files each containing half of the words in the original file and pass in the names of these split files when invoking your program. Each process can then sort different split files.
 
 Hint: You still need to invoke the `mergewords` function to merge the two sorted intermediate files.
