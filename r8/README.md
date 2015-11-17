@@ -78,4 +78,11 @@ Fast-forward
 
 Now, your local machine will have the same code you see on GitHub. Be sure to frequently perform `git pull` so that you have the latest version of the code. Occasionally, you will get something called a merge conflict, which is when you have two commits that conflict with each other. Sometimes, Git will be able to automatically fix them, and sometimes you will be explicitly told to fix the merge conflict yourself. This is a scenario where the solution is best learned via research and trial and error.
 
-For a graphical view of the Git repository, you can install the program `gitk` and run it from the command line within a Git repository.
+For a graphical view of the Git repository, you can install the program `gitk` (via `sudo apt-get install gitk`) and run it from the command line within a Git repository.
+
+Compiling code, source files, object files, binaries/executables
+------
+The general lifecycle (simplified for this exercise) for a C program is: `source code --(compiler)--> object file --(linker)--> executable`. You can only run the executable.  
+We use GCC, or GNU Compiler Collection to turn our source code into an executable. We can also give GCC various flags to turn our code into an intermediate step (such as an object file).
+
+Let's go through these 3 steps explicitly using two source files and GCC. These files are `main.c` and `library.c`.
