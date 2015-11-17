@@ -86,3 +86,142 @@ The general lifecycle (simplified for this exercise) for a C program is: `source
 We use GCC, or GNU Compiler Collection to turn our source code into an executable. We can also give GCC various flags to turn our code into an intermediate step (such as an object file).
 
 Let's go through these 3 steps explicitly using two source files and GCC. These files are `main.c` and `library.c`.
+
+Let's compile each C file into its corresponding object file (.o extension).
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ gcc main.c -c -o main.o
+stud@lubuntu64:~/cso/recitation/r8$ gcc library.c -c -o library.o
+```
+
+If you run `ls`, you'll see that the two object files were created. Let's go over the two flags we used, `-c` and `-o`. `-c` tells GCC that the output should be an object file (rather than the default behavior, an executable). `-o file.o` tells GCC that the output should be called `file.o`.
+
+Now, let's link the two object files together into an executable that we can run.
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ gcc main.o library.o -o executable
+```
+
+Here, GCC takes in two inputs, the two object files created above. Our output should go to a file called `executable`. No other flags were used, so the default behavior of creating an executable happens. Then we can run our code.
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ ./executable
+Hello world
+```
+
+Now, let's introduce some other flags.  
+`-g` enables debugging symbols (so output from GDB/Valgrind makes more sense and includes line numbers)  
+`-Wall` gives you warnings  
+`-Wextra` gives you even more warnings (use both of them, not just one)  
+
+Let's try out these flags (they should be used when working with source files)
+```
+stud@lubuntu64:~/cso/recitation/r8$ gcc -g -Wall -Wextra main.c -c -o main.o
+main.c: In function ‘main’:
+main.c:7:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+```
+
+We have a compiler warning. It says that the function `main` has a return type that isn't void, but nothing is explicitly returned. If you look at `main.c` lines 6 and 7, you'll see that there is no `return 0;`. Put that in, and rerun the above command.  
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ vim main.c
+stud@lubuntu64:~/cso/recitation/r8$ gcc -g -Wall -Wextra main.c -c -o main.o
+```
+Now you'll notice that the compiler is happy. We can repeat this process on `library.c` as well (which produces no warnings/errors), and then create our executable.
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ gcc -g -Wall -Wextra library.c -c -o library.o
+stud@lubuntu64:~/cso/recitation/r8$ gcc library.o main.o -o executable
+```
+
+Note that we didn't bother using the various flags in the command that links the object files together. That's because object files aren't C code, so flags that deal with reading C code are irrelevant.
+
+Debugging memory-related errors (including segmentation faults)
+-----
+
+In the above section, we created the file `executable` that prints out "Hello World". No segmentation faults happened. But are we sure that we correctly used functions related the memory, didn't go out of bounds, etc? First, install the program Valgrind (via `sudo apt-get install valgrind`). We will use the Memcheck feature of Valgrind (the default one).
+
+Let's run our executable inside Valgrind.
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ valgrind ./executable
+==3636== Memcheck, a memory error detector
+==3636== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3636== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==3636== Command: ./executable
+==3636==
+Hello world
+==3636==
+==3636== HEAP SUMMARY:
+==3636==     in use at exit: 13 bytes in 1 blocks
+==3636==   total heap usage: 1 allocs, 0 frees, 13 bytes allocated
+==3636==
+==3636== LEAK SUMMARY:
+==3636==    definitely lost: 13 bytes in 1 blocks
+==3636==    indirectly lost: 0 bytes in 0 blocks
+==3636==      possibly lost: 0 bytes in 0 blocks
+==3636==    still reachable: 0 bytes in 0 blocks
+==3636==         suppressed: 0 bytes in 0 blocks
+==3636== Rerun with --leak-check=full to see details of leaked memory
+==3636==
+==3636== For counts of detected and suppressed errors, rerun with: -v
+==3636== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
+
+Let's interpret the output. Lines prefixed with `==num==` is output from Valgrind (where `num` is the process ID). That means that this program produced one line of output `Hello world` (as we expected). But, if you look at the heap and leak summary, we allocated 1 block on the heap of 13 bytes, but freed 0 times. At the end of the program (from the main function), those 13 bytes went out of scope (no variable refers to them, so we can't explicitly free it inside of the main function). Let's rerun with the flag that tells us details about leaked memory (see the above output for that flag). Note that the flag needs to come before your executable name.
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ valgrind --leak-check=full ./executable
+==3640== Memcheck, a memory error detector
+==3640== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3640== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==3640== Command: ./executable
+==3640==
+Hello world
+==3640==
+==3640== HEAP SUMMARY:
+==3640==     in use at exit: 13 bytes in 1 blocks
+==3640==   total heap usage: 1 allocs, 0 frees, 13 bytes allocated
+==3640==
+==3640== 13 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==3640==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3640==    by 0x400697: print_string (library.c:8)
+==3640==    by 0x4006FF: main (main.c:6)
+==3640==
+==3640== LEAK SUMMARY:
+==3640==    definitely lost: 13 bytes in 1 blocks
+==3640==    indirectly lost: 0 bytes in 0 blocks
+==3640==      possibly lost: 0 bytes in 0 blocks
+==3640==    still reachable: 0 bytes in 0 blocks
+==3640==         suppressed: 0 bytes in 0 blocks
+==3640==
+==3640== For counts of detected and suppressed errors, rerun with: -v
+==3640== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+```
+
+It seems that in `library.c` on line 8, we called `malloc`, but we never freed that block. Fix this bug, recompile your code (turn the C file into object file, then link the two object files into an executable), then rerun Valgrind. You should get output similar to the below.
+
+```
+stud@lubuntu64:~/cso/recitation/r8$ gcc -g -Wall -Wextra library.c -c -o library.o
+stud@lubuntu64:~/cso/recitation/r8$ gcc library.o main.o -o executable
+stud@lubuntu64:~/cso/recitation/r8$ valgrind ./executable
+==3665== Memcheck, a memory error detector
+==3665== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3665== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==3665== Command: ./executable
+==3665==
+Hello world
+==3665==
+==3665== HEAP SUMMARY:
+==3665==     in use at exit: 0 bytes in 0 blocks
+==3665==   total heap usage: 1 allocs, 1 frees, 13 bytes allocated
+==3665==
+==3665== All heap blocks were freed -- no leaks are possible
+==3665==
+==3665== For counts of detected and suppressed errors, rerun with: -v
+==3665== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
+
+You'll notice that the program still correctly outputs `Hello world` but now there are no memory-related errors. We freed all blocks we allocated onto the heap.
