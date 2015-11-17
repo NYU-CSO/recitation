@@ -225,3 +225,7 @@ Hello world
 ```
 
 You'll notice that the program still correctly outputs `Hello world` but now there are no memory-related errors. We freed all blocks we allocated onto the heap.
+
+Let's look at another example, in the file `buggy-code.c`. Compile this into an object file (don't forget about the various flags to give GCC), then into an executable, and figure out what the bug is (hint: there are two). Document what they are, and potential fixes for them.
+
+A third example is in the binary `buggy-executable`. We withhold the source file `buggy-executable.c`. Using GDB and Valgrind, can you figure out what happens, and why? What is a potential fix for this? Can you use GDB to recreate sections of the source code?
