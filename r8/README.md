@@ -230,10 +230,12 @@ Let's look at another example, in the file `buggy-code.c`. Compile this into an 
 
 A third example is in the binary `buggy-executable`. We withhold the source file `buggy-executable.c`. Using GDB and Valgrind, can you figure out what happens, and why? What is a potential fix for this? Can you use GDB to recreate sections of the source code?
 
+Section 9.11 in the textbook (pages 870 to 875) contains a few example of common memory-related bugs in C code.
+
 Types and Typedef
 -----
 
-### types
+### Types
 
 When coding in C, it's incredibly important to know what the different types are. For each of the following primitive types, be sure you can answer the two questions: what is its size (in bits/bytes)? when would you use it? *The answers should be immediate!*
 
@@ -242,11 +244,13 @@ When coding in C, it's incredibly important to know what the different types are
 3. `float`
 4. `long long` (vs. `long`)
 5. `double`
-6. `size_t` 
+6. `size_t`
 7. `unsigned int`
 8. `time_t`
 
-Along these same lines, what would calling `sizeof( VARIABLE )` return?
+Along these same lines, what would calling `sizeof(VARIABLE)` (equivalent to calling `sizeof(type)`) return?
+
+The values `size_t` and `ssize_t` are typedef'd as `long unsigned int` and `long` respectively. `long unsigned int` is essentially an `unsigned long`. You may have seen these values before, but not known what they meant.
 
 What is the output of the following block of code?
 ```c
@@ -262,7 +266,7 @@ In addition to the above types, you also have the ability to define your own typ
 
 ```c
 // Returns the length of the string 'name' and
-// operates under the assumption 'name' has 
+// operates under the assumption 'name' has
 // fewer than 128 characters.
 
 char get_length (char * name) {
@@ -327,3 +331,77 @@ list_size length ( node_t head ) {
 }
 ```
 
+Note that you cannot use a typedef'd value in its own definition, but you can use values that were completely typedef'd defined above it (as in, in the definition of `node_t`, `head` is of type `struct node *` rather than `node_t *`)
+
+C Preprocessor Macros
+-----
+
+First, you should understand the ternary operator. Read https://en.wikipedia.org/wiki/%3F:#C.
+
+````c
+int max(int x, int y)
+{
+  int max = 0;
+
+  max = x > y ? x : y
+
+  // equivalent to
+  if (x > y)
+  {
+    max = x
+  }
+  else
+  {
+    max = y
+  }
+  return max;
+}
+````
+
+Then read https://en.wikipedia.org/wiki/C_preprocessor#Macro_definition_and_expansion.
+The null pointer, or `NULL` is actually the macro `#define NULL ((void *)0)`. The preprocessor goes through your code, finds every instance of the string `NULL`, and replaces it with the string `((void *)0)`. You can also do things like `#define M_PI 3.14159265358979323846` (this is how C actually defines pi in `math.h`). Keep in mind that when you run your code in GDB and use the feature to look at what line of code you're executing, you'll see the actual value `((void *)0)` rather than the word `NULL`. Don't forget the need for parenthesis is because of literal replacement.
+
+Not only can you define objects (such as constants), you can also define quick functions. Above, you saw the logic for getting the maximum of two numbers using a function. You can also write a macro to do this (page 857 of textbook). Let's look at that macro.
+
+````c
+#define MAX(x,y) ((x) > (y) ? (x) : (y))
+````
+
+We can now use either of the following two statements to do the same thing
+
+````c
+int x = 10;
+int y = 40;
+int maxn = 0;
+
+maxn = max(x, y); // calls the function max
+maxn = MAX(x, y); // expands the macro MAX out
+````
+
+Suppose we have a bitmap that we defined as
+
+````c
+char *bitmap = (char *)malloc(sizeof(char) * 100);
+memset(bitmap, 0, sizeof(char) * 100);
+````
+
+This means the bitmap has enough space to hold 800 values. Assuming our bitmap is written in Big Endian, can you write a macro that will turn a bit at an index `i` to 1 without affecting the other bits (the recommended way is to do it in one line, but you could call other macros)?
+
+Can you do the same except to extract a bit at an index `i`? The value returned should be 0 or 1.
+
+Various dynamic memory allocation strategies
+-----
+
+Section 9.9 in the textbook (pages 839 to 865) contains information on dynamic memory allocation.
+
+Recall that we cannot use any complicated data structure (such as hashtable) that would require dynamic memory allocation (this is a circular/chicken and egg problem, can't implement dynamic memory allocator using dynamic memory).
+
+The following implementations build on top of each other. Start by fully understanding the implicit free list, and move one level at a time.
+
+Section 9.9.6 to 9.9.12 in the textbook (pages 847 to 862) covers the implicit free list strategy (and implements it). Sample code is provided here, and you are allowed to use and modify it for your implementation.
+
+Section 9.9.13 in the textbook (pages 862 to 863) covers the explicit free list strategy.
+
+Section 9.9.14 in the textbook (pages 863 to 865) covers the segmented free list strategy.
+
+If you can think of a better strategy for a dynamic memory allocator, feel free to implement it and try its performance via the grading scripts in the lab.
