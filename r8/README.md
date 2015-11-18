@@ -229,3 +229,101 @@ You'll notice that the program still correctly outputs `Hello world` but now the
 Let's look at another example, in the file `buggy-code.c`. Compile this into an object file (don't forget about the various flags to give GCC), then into an executable, and figure out what the bug is (hint: there are two). Document what they are, and potential fixes for them.
 
 A third example is in the binary `buggy-executable`. We withhold the source file `buggy-executable.c`. Using GDB and Valgrind, can you figure out what happens, and why? What is a potential fix for this? Can you use GDB to recreate sections of the source code?
+
+Types and Typedef
+-----
+
+### types
+
+When coding in C, it's incredibly important to know what the different types are. For each of the following primitive types, be sure you can answer the two questions: what is its size (in bits/bytes)? when would you use it? *The answers should be immediate!*
+
+1. `int`
+2. `char`
+3. `float`
+4. `long long` (vs. `long`)
+5. `double`
+6. `size_t` 
+7. `unsigned int`
+8. `time_t`
+
+Along these same lines, what would calling `sizeof( VARIABLE )` return?
+
+What is the output of the following block of code?
+```c
+char a[10];
+char *b = (char *)malloc(sizeof(int) * 10);
+
+printf("%d %d\n", sizeof(a), sizeof(b));
+```
+
+### typedef
+
+In addition to the above types, you also have the ability to define your own types by way of the `typedef` command. Recall that one of the tenets of good code is readability. Consider the following code:
+
+```c
+// Returns the length of the string 'name' and
+// operates under the assumption 'name' has 
+// fewer than 128 characters.
+
+char get_length (char * name) {
+  char i = 0;
+  while (name[i] != NULL) {
+    i++;
+  }
+  return i;
+}
+```
+
+The above code is fine; however, it's a bit weird that we're storing the length of name in a char. For the sake of efficiency we should be storing values that we *know* to be < 128 in char's, but for the sake of readability, we might want to define a new type, like `name_length`. We could so as below:
+
+```c
+typedef char name_length;
+
+name_length get_length (char * name) {
+  name_length i = 0;
+  while (name[i] != NULL) {
+    i++;
+  }
+  return name_length;
+}
+```
+
+Cool! Of course, you might ask whether it was *really* necessary to create a whole new type called `name_length` instead of using (e.g.) char ... and this author would agree it isn't strictly preferable. But in general, being able to name your own types can be exceedingly useful for readability and style.
+
+An especially useful place you should feel inclined to use typedefs is whenever you're dealing with structs. Recall a struct allows you to group several primitive variables together into a single unit.
+
+```c
+struct node {
+  struct node * head;
+  struct node * next;
+  struct node * prev;
+  int value;
+}
+```
+
+The above defines a simple node structure for a linked list, very similar to what you've used in previous labs. You'll recall that each time you needed a node, you had to type `struct node`. Typedef lets us get around that by typedef'ing the `struct node` to something like `node_t`. See the following:
+
+```c
+typedef struct node {
+  struct node * head;
+  struct node * next;
+  struct node * prev;
+  int value
+} node_t;
+```
+
+Complete the following code:
+
+```c
+typedef struct node { ... } node_t;
+typedef size_t list_size;
+
+node_t find_node ( node_t head , int value ) {
+  // YOUR CODE HERE
+}
+
+list_size length ( node_t head ) {
+  // YOUR CODE HERE
+}
+```
+
