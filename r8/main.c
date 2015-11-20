@@ -4,5 +4,4 @@ int main()
 {
     char *string = "Hello world\n";
     print_string(string);
-    return 0;
 }
