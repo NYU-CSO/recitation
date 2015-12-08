@@ -1,7 +1,7 @@
 Tutorial 10
 =========
 
-Exercise 1: Multi-threaded Prime Finder Using Concurrent Channels
+Exercise 1: A Concurrent Channel
 -----
 
 The `chan.c` file in this directory implements the channel object discussed the lecture.
