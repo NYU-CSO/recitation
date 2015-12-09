@@ -91,6 +91,7 @@ int main()
     return 0;
 }
 ````
+Output:
 ````
 Printing out sizes of various types
 sizeof(int) = 4
@@ -114,6 +115,95 @@ Note that the compiler knows as compile-time how big the arrays `c` and `e` are.
 So the output of the block of code declaring two character arrays should give us
 ````
 10 8
+````
+
+Linked list code:
+````c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct node
+{
+    struct node *head;
+    struct node *next;
+    struct node *prev;
+    int value;
+} node_t;
+
+typedef size_t list_size;
+
+node_t find_node(node_t head, int value);
+list_size length(node_t head);
+
+int main()
+{
+    node_t one = { NULL, NULL, NULL, 1 };
+    node_t two = { NULL, NULL, NULL, 2 };
+    node_t three = { NULL, NULL, NULL, 3 };
+    node_t four = { NULL, NULL, NULL, 4 };
+
+    printf("Creating linked list: 2 1 4 3\n");
+
+    two.next = &one;
+    one.prev = &two;
+
+    one.next = &four;
+    four.prev = &one;
+
+    four.next = &three;
+    three.prev = &four;
+
+    node_t *head = &two;
+
+    printf("Length 4: %lu\n", length(*head));
+    printf("Find 1: %d\n", find_node(*head, 1).value);
+    printf("Find 7: %d\n", find_node(*head, 7).value);
+
+    return 0;
+}
+
+node_t find_node(node_t head, int value)
+{
+    // assume that the parameter head is in fact the head node
+    // otherwise, we would need to extract the head node via the
+    // head field in node_t
+    node_t *node = &head;
+    while (node != NULL)
+    {
+        if (node->value == value)
+        {
+            return *node;
+        }
+        node = node->next;
+    }
+
+    // the return type seems as if it should instead be node_t *
+    // but to answer the question in exact wording, create
+    // a blank node
+    node_t blank;
+    memset(&blank, 0, sizeof(node_t));
+    return blank;
+}
+
+list_size length(node_t head)
+{
+    node_t *node = &head;
+    list_size len = 0;
+    while (node != NULL)
+    {
+        len++;
+        node = node->next;
+    }
+    return len;
+}
+````
+Output:
+````
+Creating linked list: 2 1 4 3
+Length 4: 4
+Find 1: 1
+Find 7: 0
 ````
 
 C Preprocessor Macros
