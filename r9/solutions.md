@@ -79,6 +79,6 @@ Feel free to run a diff between the two files to see what changes were made.
 
 ### Exec a different program
 
-The algorithm is to have the process fork into a parent and a child. The parent will wait for the child to finish, read in the two input files, and merge them. The child will fork into another parent and child. The child's child will sort the second half of the input file, and the child's parent will sort the first half of the input file, wait for the child's child to finish, and then exit. The reason for this is so that when the original parent waits for its child to finish, the two halves are in the two files (assuming no errors occured).
+The algorithm is to have the process fork into a parent and a child. The parent will wait for all children to finish, read in the two input files, and merge them. The child will fork into another parent and child. The child's child will sort the second half of the input file, and the child's parent will sort the first half of the input file. Then as the parent waits for all children, the two halves are in the two files (assuming no errors occured).
 
 The solution is implemented in `multisort-exec.c`. Please note that there are memory leaks in the program `sort` that you may see if you run Memcheck on the code. We cannot do anything about this.
