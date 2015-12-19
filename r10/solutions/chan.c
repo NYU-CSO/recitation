@@ -100,6 +100,10 @@ void chan_close(channel *chan)
  */
 void chan_destroy(channel *chan)
 {
+    if (chan->closed == 0)
+    {
+        return;
+    }
     pthread_cond_destroy(&chan->empty);
     pthread_cond_destroy(&chan->not_empty);
     pthread_mutex_destroy(&chan->m);
