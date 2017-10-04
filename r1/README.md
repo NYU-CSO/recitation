@@ -73,7 +73,7 @@ that's the editor we use.  `vim` is a text-editor; all the stuff you want to do
 can be typically accomplished without using the mouse (that is much faster than
 having to click around).
 
-Here is a tutorial on vim https://wiki.gentoo.org/wiki/Vim/Guide. (If you prefer learning
+Here is a tutorial on vim http://www.openvim.com/tutorial.html. (If you prefer learning
 emacs, here's a tutorial on emacs http://www.gnu.org/software/emacs/tour/)
 You can also search online for other tutorials.
 
